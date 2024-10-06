@@ -8,39 +8,22 @@ namespace SEN371_Project
 {
     internal class Record
     {
-       public string recordID;
-       public DateTime dateCreated;
-       public string description;
-        
-
-        public string RecordID
-    {
-        get { return recordID; }
-        private set { recordID = value; } 
-    }
-
-    
-    public DateTime DateCreated
-    {
-        get { return dateCreated; }
-        private set { dateCreated = value; } 
-    }
-
-   
-    public string Description
-    {
-        get { return description; }
-        private set { description = value; } 
-    }
+        public string RecordID { get; private set; }
+        public DateTime DateCreated { get; private set; }
+        public string Description { get; private set; }
 
         public Record(string recordID, DateTime dateCreated, string description)
         {
-            
+          RecordID = recordID;
+          DateCreated = dateCreated;
+          Description = description; 
         }
 
       public void DisplayRecord()
       {
-          
+        Console.WriteLine($"Record ID: {RecordID}");
+        Console.WriteLine($"Date Created: {DateCreated}");
+        Console.WriteLine($"Description: {Description}"); 
       }
     
     }
