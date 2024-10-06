@@ -18,6 +18,23 @@ namespace SEN371_Project
 
         private void displayClientDetails() { }
 
+        public void LogIssue(string issue, Client client)
+        {
+            // Logic to log the issue
+            System.Console.WriteLine($"Issue logged for client {client.Name}: {issue}");
+        }
+
+        public void AssignTechnician(Technician tech, Task task)
+        {
+            tech.AssignTask(task);
+            System.Console.WriteLine($"Task {task.TaskID} assigned to technician {tech.Name}");
+        }
+
+        public void EndInteraction(Client client)
+        {
+            // End interaction logic
+            System.Console.WriteLine($"Interaction ended for client {client.Name}");
+        }
 
     }
 }

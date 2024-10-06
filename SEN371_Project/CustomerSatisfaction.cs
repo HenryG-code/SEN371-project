@@ -13,7 +13,7 @@ namespace SEN371_Project
         private float stisfactionScore;
         private string complaintDetials;
 
-        //Just creatring the bodys for now
+        //Just creating the bodys for now
 
         public void sendSurvey()
         {
