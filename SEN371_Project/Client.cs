@@ -17,7 +17,7 @@ namespace SEN371_Project
         public string ClientID
     {
         get { return clientID; }
-        private set { clientID = value; } // Private set to control modification
+        private set { clientID = value; } 
     }
 
     
