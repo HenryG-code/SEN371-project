@@ -8,5 +8,13 @@ namespace SEN371_Project
 {
     internal class FieldService
     {
+        private string jobID;
+        private string technicianAssignmnet;
+        private string jobStatus;
+
+        public void sceduleTechnician() { }
+
+        public void monitorJobProgress() { }
+
     }
 }
