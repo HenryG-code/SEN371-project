@@ -12,6 +12,11 @@ namespace SEN371_Project
        public DateTime dateCreated;
        public string description;
 
+        public Record(string recordID, DateTime dateCreated, string description)
+        {
+            
+        }
+
       public void UpdateRecord()
     
     }
