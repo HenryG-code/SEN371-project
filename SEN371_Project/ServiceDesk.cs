@@ -38,15 +38,16 @@ namespace SEN371_Project
         }
 
         public void logServiceZRequest() { 
-
+            // To be implemented later
         }
         
-        private void assignTechnician() {
-
+        private void assignTechnician(string technicianID) {
+             // Logic to assign a technician
+            Console.WriteLine($"Technician {technicianID} assigned.");
          }
 
         private void displayClientDetails() { 
-            
+            Console.WriteLine($"Client Details: {ClientDetails}");
         }
 
 

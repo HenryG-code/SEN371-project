@@ -14,41 +14,47 @@ namespace SEN371_Project
         private int serviceUsage;
 
          public string ContractID
-    {
-        get { return contractID; }
-        private set { contractID = value; } 
-    }
+        {
+            get { return contractID; }
+            private set { contractID = value; } 
+        }
 
     
-    public string ServiceLevel
-    {
-        get { return serviceLevel; }
-        private set { serviceLevel = value; } 
-    }
+        public string ServiceLevel
+        {
+            get { return serviceLevel; }
+            private set { serviceLevel = value; } 
+        }
 
-   
-    public DateTime RenewalDate
-    {
-        get { return renewalDate; }
-        private set { renewalDate = value; } 
-    }
+        public DateTime RenewalDate
+        {
+            get { return renewalDate; }
+            private set { renewalDate = value; } 
+        }
 
-    public int ServiceUsage
-    {
-        get { return serviceUsage; }
-        private set { serviceUsage = value; }
-    }
+        public int ServiceUsage
+        {
+            get { return serviceUsage; }
+            private set { serviceUsage = value; }
+        }
         
 
         public Contract(string recordId, DateTime dateCreated, string description, string contractId, sting serviceLevel, DateTime renewalDate, int serviceUsage)
         : base(recordId, dateCreated, description)
         {
+            ContractID = contractId;
+            ServiceLevel = serviceLevel;
+            RenewalDate = renewalDate;
+            ServiceUsage = serviceUsage;
+        }
+
+        public void viewContractDetails() { 
 
         }
 
-        public void viewContractDetails() { }
-
-        public void renewContract() { }
+        public void renewContract() { 
+            
+        }
 
 
     }
