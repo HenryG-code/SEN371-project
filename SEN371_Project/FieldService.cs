@@ -12,8 +12,8 @@ namespace SEN371_Project
         private string technicianAssignmnet;
         private string jobStatus;
 
-        public FieldService(string recordId, DateTime dateCreated, string description, string jobID,
-                             string technicianAssignment, string jobStatus) :base(recordId, dateCreated, description)
+        public FieldService(string recordID, DateTime dateCreated, string description, string jobID,
+                             string technicianAssignment, string jobStatus) :base(recordID, dateCreated, description)
 
         public void scheduleTechnician() { }
 
