@@ -9,10 +9,44 @@ namespace SEN371_Project
     internal class Client:Record
     {
         private string clientID;
-        private string clientName;//think we should change this to clientname
+        private string clientName;
         private string[] serviceHistory;
         private string contractStatus;
         private int priority;
+
+        public string ClientID
+    {
+        get { return clientID; }
+        private set { clientID = value; } // Private set to control modification
+    }
+
+    
+    public string ClientName
+    {
+        get { return clientName; }
+        private set { clientName = value; } 
+    }
+
+   
+    public string[] ServiceHistory
+    {
+        get { return serviceHistory; }
+        private set { serviceHistory = value; }
+    }
+
+    
+    public string ContractStatus
+    {
+        get { return contractStatus; }
+        private set { contractStatus = value; } 
+    }
+
+     public int priority
+    {
+        get { return priority; }
+        private set { priority = value; } 
+    }
+    
 
         public Client(string recordId, DateTime dateCreated, string description, string clientID, string clientName, string serviceHistory, string contractStatus, int priority)
         : base(recordId, dateCreated, description)
