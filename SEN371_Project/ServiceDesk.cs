@@ -13,35 +13,41 @@ namespace SEN371_Project
         private string clientDetails;
 
         public string[] ServiceRequestList
-    {
-        get { return serviceRequestList; }
-        private set { serviceRequestList = value; } 
-    }
-
-   
-    public string CommunicationChannel
-    {
-        get { return communicationChannel; }
-        private set { communicationChannel = value; } 
-    }
+        {
+            get { return serviceRequestList; }
+            private set { serviceRequestList = value; } 
+        }
 
     
-    public string ClientDetails
-    {
-        get { return clientDetails; }
-        private set { clientDetails = value; } 
-    }
+        public string CommunicationChannel
+        {
+            get { return communicationChannel; }
+            private set { communicationChannel = value; } 
+        }
 
-         public ServiceDesk(string[] serviceRequestList, string communicationChannel, string clientDetails)
-    {
         
-    }
+        public string ClientDetails
+        {
+            get { return clientDetails; }
+            private set { clientDetails = value; } 
+        }
 
-        public void logServiceZRequest() { }
+            public ServiceDesk(string[] serviceRequestList, string communicationChannel, string clientDetails)
+        {
+            
+        }
+
+        public void logServiceZRequest() { 
+
+        }
         
-        private void assignTechnician() { }
+        private void assignTechnician() {
 
-        private void displayClientDetails() { }
+         }
+
+        private void displayClientDetails() { 
+            
+        }
 
 
     }
