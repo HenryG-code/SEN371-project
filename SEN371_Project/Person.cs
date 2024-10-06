@@ -4,9 +4,9 @@ public class Person{
     public string ClientName { get; set; }
     public string Phone { get; set; }
 
-    public Person(int id, string ClientName, string phone) {
+    public Person(int id, string clientName, string phone) {
         ID = id;
-        ClientName = name;
+        ClientName = clientName;
         Phone = phone;
     }
 

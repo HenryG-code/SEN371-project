@@ -8,9 +8,9 @@ namespace SEN371_Project
 {
     internal class ServiceDesk
     {
-        private string[] serviceRequestList;
-        private string communicationChannel;
-        private string clientDetails;
+       public List<string> ServiceRequestList { get; private set; }
+        public string CommunicationChannel { get; set; }
+        public string ClientDetails { get; set; }
 
         public void logServiceZRequest() { }
         
@@ -18,22 +18,32 @@ namespace SEN371_Project
 
         private void displayClientDetails() { }
 
-        public void LogIssue(string issue, Client client)
+       public ServiceDesk()
         {
-            // Logic to log the issue
-            System.Console.WriteLine($"Issue logged for client {client.Name}: {issue}");
+            ServiceRequestList = new List<string>();
         }
 
-        public void AssignTechnician(Technician tech, Task task)
+        public void LogServiceRequest(string request, Client client)
         {
-            tech.AssignTask(task);
-            System.Console.WriteLine($"Task {task.TaskID} assigned to technician {tech.Name}");
+            ServiceRequestList.Add(request);
+            System.Console.WriteLine($"Service request logged for client {client.ClientName}: {request}");
+        }
+        
+        private void AssignTechnician(Technician technician, Task task)
+        {
+            technician.AssignTask(task);
+            System.Console.WriteLine($"Task {task.TaskID} assigned to technician {technician.Name}");
+        }
+
+        private void DisplayClientDetails(Client client)
+        {
+            System.Console.WriteLine($"Client Details: ID={client.ID}, Name={client.ClientName}, Phone={client.Phone}");
         }
 
         public void EndInteraction(Client client)
         {
-            // End interaction logic
-            System.Console.WriteLine($"Interaction ended for client {client.Name}");
+            // Logic to end interaction
+            System.Console.WriteLine($"Interaction ended for client {client.ClientName}");
         }
 
     }

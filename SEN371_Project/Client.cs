@@ -8,14 +8,7 @@ namespace SEN371_Project
 {
     internal class Client:Person
     {
-        /**
-        private string clientID;
-        private string clientName;//think we should change this to clientname
-        private string[] serviceHistory;
-        private string contractStatus;
-        private int priority;
-        **/
-
+      
         public bool IsFlagged { get; set; }
         public List<string> ServiceHistory { get; set; }
         public List<Contract> Contracts { get; set; }

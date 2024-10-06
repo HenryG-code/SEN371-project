@@ -8,37 +8,39 @@ namespace SEN371_Project
 {
     internal class Contract
     {
-        /**
-        private string contractID;
-        private string serviceLevel;
-        private DateTime renewalDate;
-        private int serviceUsage;
-        **/
-
-        public int ContracterID {get; set;}
-
-        private string ServiceLevel{get; set;}
-
-        private bool RenewalStatus{get; set;}
-
-        public Contract(int id, string ServiceLevel, bool status)
+        // Properties
+        public int ContractID { get; set; }
+        public string ServiceLevel { get; set; }
+        public DateTime RenewalDate { get; set; }
+        public int ServiceUsage { get; set; }
+        public bool RenewalStatus { get; set; }
+        // Constructor
+        public Contract(int id, string serviceLevel, DateTime renewalDate, bool status, int serviceUsage)
         {
-          ContracterID = id;
-          ServiceLevel = ServiceLevel;
-          renewalStatus = status; 
+            ContractID = id;
+            ServiceLevel = serviceLevel;
+            RenewalDate = renewalDate;
+            RenewalStatus = status;
+            ServiceUsage = serviceUsage;
         }
 
-        public void viewContractDetails() {
-          // Logic to track contract performance
-        System.Console.WriteLine($"Tracking performance for Contract {ContractID}");  
-         }
-
-        public void renewContract() { 
-
-         // Logic to automate contract renewal
-        System.Console.WriteLine($"Contract {ContractID} has been renewed automatically");
+        // Method to view contract details
+        public void ViewContractDetails()
+        {
+            Console.WriteLine($"Contract ID: {ContractID}");
+            Console.WriteLine($"Service Level: {ServiceLevel}");
+            Console.WriteLine($"Renewal Date: {RenewalDate.ToShortDateString()}");
+            Console.WriteLine($"Renewal Status: {(RenewalStatus ? "Active" : "Inactive")}");
+            Console.WriteLine($"Service Usage: {ServiceUsage} times");
         }
 
-
+         // Method to renew contract
+        public void RenewContract()
+        {
+            // Logic to automate contract renewal
+            RenewalStatus = true; // Set renewal status to active
+            RenewalDate = DateTime.Now.AddYears(1); // Example: renew for one year
+            Console.WriteLine($"Contract {ContractID} has been renewed until {RenewalDate.ToShortDateString()}");
+        }
     }
 }
