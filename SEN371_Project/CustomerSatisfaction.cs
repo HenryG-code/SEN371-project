@@ -9,9 +9,9 @@ namespace SEN371_Project
     internal class CustomerSatisfaction
     {
         private string feedbackID;
-        private string clientID; //Corrected spelling of clientsID
-        private float satisfactionScore; //Corrected spelling of stisfactionScore
-        private string complaintDetails; //Corrected spelling of complaintDetials
+        private string clientID; 
+        private float satisfactionScore; 
+        private string complaintDetails; 
 
             public string FeedbackID
         {
