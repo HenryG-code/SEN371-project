@@ -17,7 +17,10 @@ namespace SEN371_Project
             
         }
 
-      public void UpdateRecord()
+      public void DisplayRecord()
+      {
+          
+      }
     
     }
 }
