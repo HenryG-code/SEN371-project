@@ -18,14 +18,12 @@ namespace SEN371_Project
             private set { serviceRequestList = value; } 
         }
 
-    
         public string CommunicationChannel
         {
             get { return communicationChannel; }
             private set { communicationChannel = value; } 
         }
 
-        
         public string ClientDetails
         {
             get { return clientDetails; }

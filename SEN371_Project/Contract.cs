@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SEN371_Project
 {
-    internal class Contract:Record
+    internal class Contract : Record
     {
         private string contractID;
         private string serviceLevel;

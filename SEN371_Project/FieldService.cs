@@ -9,7 +9,7 @@ namespace SEN371_Project
     internal class FieldService : Record
     {
         private string jobID;
-        private string technicianAssignment; // Corrected spelling
+        private string technicianAssignment; 
         private string jobStatus;
         
 
