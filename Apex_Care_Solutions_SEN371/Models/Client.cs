@@ -39,14 +39,14 @@ namespace SEN371_Project
             private set { contractStatus = value; }
         }
 
-        public int priority
+        public int Priority
         {
             get { return priority; }
             private set { priority = value; }
         }
 
 
-        public Client(string recordId, DateTime dateCreated, string description, string clientID, string clientName, string serviceHistory, string contractStatus, int priority)
+        public Client(string recordId, DateTime dateCreated, string description, string clientID, string clientName, string[] serviceHistory, string contractStatus, int priority)
         : base(recordId, dateCreated, description)
         {
             ClientID = clientID;

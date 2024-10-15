@@ -39,7 +39,7 @@ namespace SEN371_Project
         }
 
 
-        public Contract(string recordId, DateTime dateCreated, string description, string contractId, sting serviceLevel, DateTime renewalDate, int serviceUsage)
+        public Contract(string recordId, DateTime dateCreated, string description, string contractId, string serviceLevel, DateTime renewalDate, int serviceUsage)
         : base(recordId, dateCreated, description)
         {
             ContractID = contractId;

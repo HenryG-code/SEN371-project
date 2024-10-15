@@ -33,7 +33,10 @@ namespace SEN371_Project
         }
 
         public FieldService(string recordID, DateTime dateCreated, string description, string jobID,
-                             string technicianAssignment, string jobStatus) : base(recordID, dateCreated, description);
+                             string technicianAssignment, string jobStatus) : base(recordID, dateCreated, description)
+        {
+
+        }
 
         public void scheduleTechnician()
         {
