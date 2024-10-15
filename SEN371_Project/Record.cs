@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +25,41 @@ namespace SEN371_Project
         Console.WriteLine($"Date Created: {DateCreated}");
         Console.WriteLine($"Description: {Description}"); 
       }
+
+      public void UpdateDescription(string newDescription)
+        {
+            if (string.IsNullOrWhiteSpace(newDescription))
+                throw new ArgumentException("Description cannot be null or empty.", nameof(newDescription));
+
+            Description = newDescription;
+            Console.WriteLine("Description updated successfully.");
+        }
+
+        public override string ToString()
+        {
+            return $"Record ID: {RecordID}, Date Created: {DateCreated:yyyy-MM-dd HH:mm:ss}, Description: {Description}";
+        }
+
     
     }
+
+    class Program
+  {
+    static void Main(string[] args)
+    {
+        Record record = new Record("R001", DateTime.Now, "Initial record description");
+        
+        // Display record details
+        record.DisplayRecord();
+        
+        // Update the description
+        record.UpdateDescription("Updated record description");
+        
+        // Display updated record details
+        record.DisplayRecord();
+        
+        // Print the record using ToString
+        Console.WriteLine(record.ToString());
+    }
+  }
 }
