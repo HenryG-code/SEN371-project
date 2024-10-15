@@ -61,30 +61,4 @@ namespace SEN371_Project
             Console.WriteLine($"Contract renewed! New Renewal Date: {RenewalDate.ToShortDateString()}, Updated Service Usage: {ServiceUsage}");
         }
     }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Create a new Contract instance
-            Contract contract = new Contract(
-                "REC002",
-                DateTime.Now,
-                "Client contract for service level and usage",
-                "CON001",
-                "Gold",
-                DateTime.Now.AddYears(1),
-                100
-            );
-
-            // View the contract details
-            contract.ViewContractDetails();
-
-            // Renew the contract and update the usage
-            contract.RenewContract(50);  // Adds 50 hours to service usage
-
-            // View the updated contract details
-            contract.ViewContractDetails();
-        }
-    }
 }

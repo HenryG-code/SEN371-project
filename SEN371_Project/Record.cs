@@ -43,23 +43,4 @@ namespace SEN371_Project
     
     }
 
-    class Program
-  {
-    static void Main(string[] args)
-    {
-        Record record = new Record("R001", DateTime.Now, "Initial record description");
-        
-        // Display record details
-        record.DisplayRecord();
-        
-        // Update the description
-        record.UpdateDescription("Updated record description");
-        
-        // Display updated record details
-        record.DisplayRecord();
-        
-        // Print the record using ToString
-        Console.WriteLine(record.ToString());
-    }
-  }
 }

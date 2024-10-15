@@ -74,6 +74,7 @@ namespace SEN371_Project
                 Console.WriteLine($"{Name} is not available for any new assignments.");
                 return;
             }
+            string jobDetails = "Sample Job Details"; // Define jobDetails variable
             Console.WriteLine($"{Name} has received the job assignment: {jobDetails}");
         }
 
@@ -92,27 +93,4 @@ namespace SEN371_Project
 
     }
 
-    class Program
-{
-    static void Main(string[] args)
-    {
-        //............This is just an example I got from GPT...............
-        Technician tech = new Technician("T001", "Alice Johnson", new string[] { "Electrical", "Plumbing" }, true);
-
-        // Display technician info
-        tech.DisplayTechnicianInfo();
-
-        // Update job status
-        tech.UpdateJobStatus();
-
-        // Receive a job assignment
-        tech.ReceiveJobAssignment("Fix the leaking sink.");
-
-        // Attempt to receive another job assignment
-        tech.ReceiveJobAssignment("Install new electrical wiring.");
-
-        // Print technician using ToString
-        Console.WriteLine(tech.ToString());
-    }
-}
 }

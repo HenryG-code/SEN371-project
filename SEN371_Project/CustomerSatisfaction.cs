@@ -93,31 +93,4 @@ namespace SEN371_Project
         }
 
     }
-
-    // Example usage of the class in the Main method
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Create a new CustomerSatisfaction object
-            CustomerSatisfaction feedback = new CustomerSatisfaction(
-                "FB001",
-                "CL001",
-                4.2f,
-                "Delayed response from technical support"
-            );
-
-            // Display feedback information
-            feedback.DisplayFeedbackInfo();
-
-            // Log a complaint
-            feedback.LogComplaint();
-
-            // Send a survey to the client
-            feedback.SendSurvey();
-
-            // Analyze the sentiment based on the satisfaction score
-            feedback.AnalyzeSentiment();
-        }
-    }
 }
