@@ -1,73 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SEN371_Project
-{
-    internal class Client : Record
-    {
-        private string clientID;
-        private string clientName;
-        private string[] serviceHistory;
-        private string contractStatus;
-        private int priority;
+    class Client extends Record {
+    constructor(recordId, dateCreated, description, clientID, clientName, serviceHistory, contractStatus, priority) {
+        super(recordId, dateCreated, description);
+        this._clientID = clientID;
+        this._clientName = clientName;
+        this._serviceHistory = serviceHistory;
+        this._contractStatus = contractStatus;
+        this._priority = priority;
+    }
 
-        public string ClientID
-        {
-            get { return clientID; }
-            private set { clientID = value; }
-        }
+    get clientID() {
+        return this._clientID;
+    }
 
-        public string ClientName
-        {
-            get { return clientName; }
-            private set { clientName = value; }
-        }
+    set clientID(value) {
+        this._clientID = value;
+    }
 
-        public string[] ServiceHistory
-        {
-            get { return serviceHistory; }
-            private set { serviceHistory = value; }
-        }
+    get clientName() {
+        return this._clientName;
+    }
 
+    set clientName(value) {
+        this._clientName = value;
+    }
 
-        public string ContractStatus
-        {
-            get { return contractStatus; }
-            private set { contractStatus = value; }
-        }
+    get serviceHistory() {
+        return this._serviceHistory;
+    }
 
-        public int priority
-        {
-            get { return priority; }
-            private set { priority = value; }
-        }
+    set serviceHistory(value) {
+        this._serviceHistory = value;
+    }
 
+    get contractStatus() {
+        return this._contractStatus;
+    }
 
-        public Client(string recordId, DateTime dateCreated, string description, string clientID, string clientName, string serviceHistory, string contractStatus, int priority)
-        : base(recordId, dateCreated, description)
-        {
-            ClientID = clientID;
-            ClientName = clientName;
-            ServiceHistory = serviceHistory;
-            ContractStatus = contractStatus;
-            Priority = priority;
-        }
+    set contractStatus(value) {
+        this._contractStatus = value;
+    }
 
-        public void updateClientRecord()
-        {
-            // Implementation for updating the client's record
-            Console.WriteLine($"Client record for {ClientName} updated.");
-        }
+    get priority() {
+        return this._priority;
+    }
 
-        public void flagClient()
-        {
-            // Implementation for flagging the client
-            Console.WriteLine($"Client {ClientName} flagged for review.");
-        }
+    set priority(value) {
+        this._priority = value;
+    }
 
+    updateClientRecord() {
+        // Implementation for updating the client's record
+        console.log(`Client record for ${this._clientName} updated.`);
+    }
 
+    flagClient() {
+        // Implementation for flagging the client
+        console.log(`Client ${this._clientName} flagged for review.`);
     }
 }
+
