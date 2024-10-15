@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+class Record {
+    constructor(recordID, dateCreated, description) {
+        this._recordID = recordID;
+        this._dateCreated = dateCreated;
+        this._description = description;
+    }
 
-namespace SEN371_Project
-{
-    internal class Record
-    {
-        public string RecordID { get; private set; }
-        public DateTime DateCreated { get; private set; }
-        public string Description { get; private set; }
+    // Getters
+    get recordID() {
+        return this._recordID;
+    }
 
-        public Record(string recordID, DateTime dateCreated, string description)
-        {
-            RecordID = recordID;
-            DateCreated = dateCreated;
-            Description = description;
-        }
+    get dateCreated() {
+        return this._dateCreated;
+    }
 
-        public void DisplayRecord()
-        {
-            Console.WriteLine($"Record ID: {RecordID}");
-            Console.WriteLine($"Date Created: {DateCreated}");
-            Console.WriteLine($"Description: {Description}");
-        }
+    get description() {
+        return this._description;
+    }
 
+    // Display method
+    displayRecord() {
+        console.log(`Record ID: ${this._recordID}`);
+        console.log(`Date Created: ${this._dateCreated}`);
+        console.log(`Description: ${this._description}`);
     }
 }
