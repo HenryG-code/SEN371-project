@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,7 @@ namespace SEN371_Project
         private string[] serviceHistory;
         private string contractStatus;
         private int priority;
+        private bool flagged = false;
 
             public string ClientID
         {
@@ -39,14 +40,20 @@ namespace SEN371_Project
             private set { contractStatus = value; } 
         }
 
-        public int priority
+        public int Priority
         {
             get { return priority; }
             private set { priority = value; } 
         }
-        
 
-        public Client(string recordId, DateTime dateCreated, string description, string clientID, string clientName, string serviceHistory, string contractStatus, int priority)
+        public bool Flagged
+        {
+           get {return flagged;}
+           private set {flagged = value;}
+        }
+
+
+        public Client (string recordId, DateTime dateCreated, string description, string clientID, string clientName, string[] serviceHistory, string contractStatus, int priority)
         : base(recordId, dateCreated, description)
         {
             ClientID = clientID;
@@ -56,13 +63,16 @@ namespace SEN371_Project
             Priority = priority;
         }
 
-        public void updateClientRecord() { 
+        public void updateClientRecord(string newContractStatus, int newPriority) { 
             // Implementation for updating the client's record
-            Console.WriteLine($"Client record for {ClientName} updated.");
+            ContractStatus = newContractStatus;
+            Priority = newPriority;
+            Console.WriteLine($"Client record for {ClientName} updated: Contract Status = {ContractStatus}, Priority = {Priority} ");
         }
 
         public void flagClient() { 
              // Implementation for flagging the client
+             flagged = true;
             Console.WriteLine($"Client {ClientName} flagged for review.");
         }
 
