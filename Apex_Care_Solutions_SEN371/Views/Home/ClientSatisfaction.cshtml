@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    <div class="text-center">
+
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
+            Go to the Client Page
+        </a>
+
+        <a href="@Url.Action("ClientSatisfaction", "Home")" class="btn btn-primary">
+            Go to Client Satisfaction Services
+        </a>
+
+        <a href="@Url.Action("ClientManagement", "Home")" class="btn btn-primary">
+            Go to Client Management Services
+        </a>
+
+        <a href="@Url.Action("Technicians", "Home")" class="btn btn-primary">
+            Go to Technicians
+        </a>
+
+        <a href="@Url.Action("ServiceDesk", "Home")" class="btn btn-primary">
+            Go to Service Desk
+        </a>
+
+        <a href="@Url.Action("Privacy", "Home")" class="btn btn-primary">
+            Go to the Contract Management Page
+        </a>
+
+    </div>
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Satisfaction Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+            .button-row button {
+                padding: 10px 20px;
+                background-color: #e9ecef;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+                .button-row button img {
+                    width: 50px;
+                    height: 50px;
+                }
+
+        .complaints-section,
+        .feedback-section {
+            margin-bottom: 20px;
+        }
+
+        .complaint-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            background-color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .record-complaint input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .feedback-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+            .feedback-item span {
+                display: block;
+                margin-top: 5px;
+                font-weight: bold;
+            }
+
+            .feedback-item .rating {
+                color: gold;
+                font-size: 18px;
+            }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .buttons button {
+                padding: 15px;
+                width: 48%;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+                .buttons button.create-task {
+                    background-color: #f8f9fa;
+                }
+
+                .buttons button.follow-up {
+                    background-color: #000;
+                    color: white;
+                }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Client Satisfaction Services</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="button-row">
+            <button>
+                <img src="complaint_icon.png" alt="Client Complaints"><br>
+                Client Complaints
+            </button>
+            <button>
+                <img src="interaction_icon.png" alt="Interactions"><br>
+                Interactions
+            </button>
+            <button>
+                <img src="followup_icon.png" alt="Follow-up Actions"><br>
+                Follow-up Actions
+            </button>
+            <button>
+                <img src="survey_icon.png" alt="Feedback Surveys"><br>
+                Feedback Surveys
+            </button>
+        </div>
+
+        <div class="complaints-section">
+            <h2>Recent Complaints</h2>
+
+            <div class="complaint-item">
+                <span><strong>Issue with Product XYZ</strong><br>Client A</span>
+                <span>12/10/2021</span>
+            </div>
+
+            <div class="complaint-item">
+                <span><strong>Delayed Service</strong><br>Client B</span>
+                <span>12/11/2021</span>
+            </div>
+
+            <div class="record-complaint">
+                <label for="complaint-details">Record New Complaint</label>
+                <input type="text" id="complaint-details" placeholder="Enter complaint details">
+            </div>
+
+            <div class="service-rep">
+                <p><strong>John Doe</strong><br>Customer Service Rep</p>
+            </div>
+        </div>
+
+        <div class="feedback-section">
+            <h2>Client Feedback</h2>
+
+            <div class="feedback-item">
+                <span>Client C</span>
+                <span class="rating">★★★★★</span>
+                <span>Exceptional service provided!</span>
+                <div>👍 👎</div>
+            </div>
+
+            <div class="feedback-item">
+                <span>Client D</span>
+                <span class="rating">★★★★★</span>
+                <span>Quick resolution to my issue.</span>
+                <div>👍 👎</div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="create-task">Create Follow-up Task</button>
+            <button class="follow-up">Initiate Follow-up Call</button>
+        </div>
+
+    </div>
+
+</body>
+</html>

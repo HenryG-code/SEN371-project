@@ -1,6 +1,322 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+    ViewData["Title"] = "Home Page";
+    <div class="text-center">
 
-<p>Use this page to detail your site's privacy policy.</p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
+            Go to the Client Page
+        </a>
+
+        <a href="@Url.Action("ClientSatisfaction", "Home")" class="btn btn-primary">
+            Go to Client Satisfaction Services
+        </a>
+
+        <a href="@Url.Action("ClientManagement", "Home")" class="btn btn-primary">
+            Go to Client Management Services
+        </a>
+
+        <a href="@Url.Action("Technicians", "Home")" class="btn btn-primary">
+            Go to Technicians
+        </a>
+
+        <a href="@Url.Action("ServiceDesk", "Home")" class="btn btn-primary">
+            Go to Service Desk
+        </a>
+
+        <a href="@Url.Action("Privacy", "Home")" class="btn btn-primary">
+            Go to the Contract Management Page
+        </a>
+
+    </div>
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 20px;
+        }
+
+        header .back-btn {
+            font-size: 18px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .icons-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .icons-section div {
+            text-align: center;
+        }
+
+        .icons-section img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .client-info img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .feedback-section {
+            margin-bottom: 30px;
+        }
+
+        .feedback-section h3 {
+            margin-bottom: 10px;
+        }
+
+        .feedback {
+            display: flex;
+            gap: 10px;
+        }
+
+        .feedback-card {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feedback-card img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        .feedback-card p {
+            font-size: 12px;
+            color: #333;
+        }
+
+        .available-services, .service-details {
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .service-item img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .performance-metrics {
+            margin-bottom: 20px;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .metric-card {
+            flex: 1;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .metric-card:last-child {
+            margin-right: 0;
+        }
+
+        .buttons-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .buttons-section button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .primary-btn {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .secondary-btn {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- Header Section -->
+        <header>
+            <a href="#" class="back-btn">&#x2190;</a>
+            <h1>Contract Management</h1>
+        </header>
+
+        <!-- Icons Section -->
+        <div class="icons-section">
+            <div>
+                <img src="service-icon.png" alt="Service Offerings">
+                <p>Service Offerings</p>
+            </div>
+            <div>
+                <img src="performance-icon.png" alt="Performance Tracking">
+                <p>Performance Tracking</p>
+            </div>
+            <div>
+                <img src="contract-icon.png" alt="Contract Renewals">
+                <p>Contract Renewals</p>
+            </div>
+        </div>
+
+        <!-- Client Info -->
+        <div class="client-info">
+            <img src="client-avatar.png" alt="Client">
+            <h2>Client Name Here</h2>
+        </div>
+
+        <!-- Customer Feedback Section -->
+        <div class="feedback-section">
+            <h3>Customer Feedback</h3>
+            <div class="feedback">
+                <div class="feedback-card">
+                    <img src="avatar-alice.png" alt="Alice">
+                    <p>Alice</p>
+                    <p>★★★★★</p>
+                    <p>Great service overall</p>
+                </div>
+                <div class="feedback-card">
+                    <img src="avatar-bob.png" alt="Bob">
+                    <p>Bob</p>
+                    <p>★★★★★</p>
+                    <p>Could improve response time</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Available Services Section -->
+        <div class="available-services">
+            <h3>Available Services</h3>
+            <div class="service-item">
+                <div>
+                    <img src="service-a-icon.png" alt="Service A">
+                    <span>Service A</span>
+                </div>
+                <span>Premium Package</span>
+            </div>
+            <div class="service-item">
+                <div>
+                    <img src="service-b-icon.png" alt="Service B">
+                    <span>Service B</span>
+                </div>
+                <span>Standard Package</span>
+            </div>
+        </div>
+
+        <!-- Service Details Section -->
+        <div class="service-details">
+            <h3>Service Details</h3>
+            <div class="service-item">
+                <div>
+                    <img src="service-a-icon.png" alt="Service A">
+                    <span>Service A</span>
+                </div>
+                <p>High-performance service with advanced features</p>
+            </div>
+            <div class="service-item">
+                <div>
+                    <img src="service-b-icon.png" alt="Service B">
+                    <span>Service B</span>
+                </div>
+                <p>Reliable service with standard features</p>
+            </div>
+        </div>
+
+        <!-- Performance Metrics Section -->
+        <div class="performance-metrics">
+            <h3>Performance Metrics</h3>
+            <div class="metrics">
+                <div class="metric-card">
+                    <p>Response Time</p>
+                    <h2>98%</h2>
+                    <p>+2%</p>
+                </div>
+                <div class="metric-card">
+                    <p>Uptime</p>
+                    <h2>99.5%</h2>
+                    <p>-0.5%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="buttons-section">
+            <button class="secondary-btn">View Promotions</button>
+            <button class="secondary-btn">Edit Service Levels</button>
+            <button class="primary-btn">Renew Contract</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

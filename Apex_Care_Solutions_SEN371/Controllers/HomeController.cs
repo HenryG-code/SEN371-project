@@ -23,6 +23,26 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             return View();
         }
 
+        public IActionResult ClientSatisfaction()
+        {
+            return View();
+        }
+
+        public IActionResult ClientManagement()
+        {
+            return View();
+        }
+
+        public IActionResult ServiceDesk()
+        {
+            return View();
+        }
+
+        public IActionResult Technicians()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
