@@ -1,15 +1,16 @@
 using Apex_Care_Solutions_SEN371.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
+using BCrypt.Net; // Ensure you have installed the BCrypt.Net-Next package
 using System.Diagnostics;
 
 namespace Apex_Care_Solutions_SEN371.Controllers
 {
     public class HomeController : Controller
     {
-        //Update tp match you specific PC
-        private readonly string _connectionString = "Server=THECYBERWIZARD\\SQLEXPRESS;Database=ApexCare;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
-
+        // Update to match your specific PC
+        private readonly string _connectionString = "Server=TIAAN_PC\\SQLEXPRESS;Database=ApexCare;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
 
         private readonly ILogger<HomeController> _logger;
 
@@ -48,12 +49,12 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        public IActionResult Login()
         {
             return View();
         }
 
-        public ActionResult Register()
+        public IActionResult Register()
         {
             return View();
         }
@@ -63,8 +64,6 @@ namespace Apex_Care_Solutions_SEN371.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
         [HttpPost]
         public IActionResult Register(string username, string password, string name, string email)
         {
@@ -72,13 +71,16 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             {
                 connection.Open();
 
-                // Insert only into Clients table
+                // Hash the password
+                string passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+
+                // Insert into Clients table
                 string insertQuery = "INSERT INTO Clients (Username, PasswordHash, Name, Email) VALUES (@Username, @Password, @Name, @Email)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
                     command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", password); // No hashing here for now
+                    command.Parameters.AddWithValue("@Password", passwordHash);
                     command.Parameters.AddWithValue("@Name", name);
                     command.Parameters.AddWithValue("@Email", email);
 
@@ -99,46 +101,51 @@ namespace Apex_Care_Solutions_SEN371.Controllers
         [HttpPost]
         public IActionResult Login(string username, string password)
         {
-            // Queries to check the user in both Clients and Technicians tables
-            string clientQuery = "SELECT COUNT(*) FROM Clients WHERE Username = @Username AND PasswordHash = @Password";
-            string technicianQuery = "SELECT COUNT(*) FROM Technicians WHERE Username = @Username AND PasswordHash = @Password";
+            string userType;
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
 
-                // First, check in the Clients table
-                SqlCommand clientCommand = new SqlCommand(clientQuery, connection);
-                clientCommand.Parameters.AddWithValue("@Username", username);
-                clientCommand.Parameters.AddWithValue("@Password", password);
-
-                int clientUserCount = (int)clientCommand.ExecuteScalar();
-
-                // If not found in Clients, check in Technicians table
-                if (clientUserCount == 0)
+                // Check in Clients first
+                if (TryAuthenticateUser(connection, "Clients", username, password, out userType))
                 {
-                    SqlCommand technicianCommand = new SqlCommand(technicianQuery, connection);
-                    technicianCommand.Parameters.AddWithValue("@Username", username);
-                    technicianCommand.Parameters.AddWithValue("@Password", password);
-
-                    int technicianUserCount = (int)technicianCommand.ExecuteScalar();
-
-                    if (technicianUserCount == 1)
-                    {
-                        // Technician login success, redirect to home or dashboard
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                else
-                {
-                    // Client login success, redirect to home or dashboard
                     return RedirectToAction("ClientManagement", "Home");
                 }
 
-                // If both checks failed, show an error message
-                ViewBag.ErrorMessage = "Invalid email or password";
-                return View();
+                // If not found, check in Technicians
+                if (TryAuthenticateUser(connection, "Technicians", username, password, out userType))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
+
+            // If both checks failed, show an error message
+            ViewBag.ErrorMessage = "Invalid username or password.";
+            return View();
+        }
+
+        private bool TryAuthenticateUser(SqlConnection connection, string table, string username, string password, out string userType)
+        {
+            string query = $"SELECT PasswordHash FROM {table} WHERE Username = @Username";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@Username", username);
+                var storedPasswordHash = command.ExecuteScalar() as string;
+
+                // Ensure storedPasswordHash is valid
+                if (!string.IsNullOrEmpty(storedPasswordHash) && storedPasswordHash.StartsWith("$2a$"))
+                {
+                    if (BCrypt.Net.BCrypt.Verify(password, storedPasswordHash))
+                    {
+                        userType = table == "Clients" ? "Client" : "Technician";
+                        return true;
+                    }
+                }
+            }
+
+            userType = null;
+            return false;
         }
     }
 }

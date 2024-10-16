@@ -4,7 +4,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
 {
     public class Datahandler
     {
-        private readonly string connectionString = "Server=THECYBERWIZARD\\SQLEXPRESS;Database=ApexCare;Trusted_Connection=True;";
+        private readonly string connectionString = "Server=TIAAN_PC\\SQLEXPRESS;Database=ApexCare;Trusted_Connection=True;";
         public bool ValidateLogin(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

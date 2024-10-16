@@ -1,4 +1,4 @@
-@{
+?@{
     ViewBag.Title = "Register";
 }
 
@@ -17,12 +17,16 @@
 <body>
     <h2>Register</h2>
 
-     @* <form method="post" action="/Account/Register"> *@
     <form asp-action="Register" asp-controller="Home" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" name="email" required>
-            <h6>We never Share your email with others</h6>
+            <h6>We never share your email with others</h6>
         </div>
 
         <div class="form-group">
