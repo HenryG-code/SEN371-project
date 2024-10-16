@@ -1,39 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    <div class="text-center">
-
-        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
-            Go to the Client Page
-        </a>
-
-        <a href="@Url.Action("ClientSatisfaction", "Home")" class="btn btn-primary">
-            Go to Client Satisfaction Services
-        </a>
-
-        <a href="@Url.Action("ClientManagement", "Home")" class="btn btn-primary">
-            Go to Client Management Services
-        </a>
-
-        <a href="@Url.Action("Technicians", "Home")" class="btn btn-primary">
-            Go to Technicians
-        </a>
-
-        <a href="@Url.Action("ServiceDesk", "Home")" class="btn btn-primary">
-            Go to Service Desk
-        </a>
-
-        <a href="@Url.Action("Privacy", "Home")" class="btn btn-primary">
-            Go to the Contract Management Page
-        </a>
-
-    </div>
-}
-
-<!DOCTYPE html>
-
-
-
-
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -181,10 +146,6 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Client Management</a></li>
-                <li><a href="#">Service Desk</a></li>
-                <li><a href="#">Technicians</a></li>
-                <li><a href="#">Contracts</a></li>
             </ul>
             <div class="auth-buttons">
                 <button onclick="location.href='@Url.Action("Login", "Home")'" class="btn btn-dark">Sign In</button>
@@ -196,7 +157,7 @@
     <!-- Main Section -->
     <main>
         <h1>ApexCare Solutions</h1>
-        <h2>View Technician Schedule and Book Appointments</h2>
+        <h2>We strive to provide you with the best service</h2>
 
         <div class="main-buttons">
             <button>View Technician Schedule</button>
@@ -211,15 +172,8 @@
     <footer>
         <div class="footer-content">
             <div class="logo">
-                &#x263B;
             </div>
-            <ul>
-                <li><a href="#">Client Management</a></li>
-                <li><a href="#">Service Desk</a></li>
-                <li><a href="#">Technician Features</a></li>
-                <li><a href="#">Contract Management</a></li>
-                <li><a href="#">Client Satisfaction</a></li>
-            </ul>
+
         </div>
     </footer>
 
