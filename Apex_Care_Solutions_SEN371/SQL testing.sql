@@ -22,4 +22,4 @@ WHERE Username = 'johndoe';
 
 SELECT Username, PasswordHash FROM Technicians WHERE Username = 'johndoe';
 
---https://localhost:<port>/Home/GenerateHashedPassword This link will help you generate hashpassword with the plain password being123 by default
+--https://localhost:<port>/Home/GenerateHashedPassword This link will help you generate hashpassword with the plain password being password123 by default
