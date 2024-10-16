@@ -17,7 +17,8 @@
 <body>
     <h2>Register</h2>
 
-    <form method="post" action="/Account/Register">
+     @* <form method="post" action="/Account/Register"> *@
+    <form asp-action="Register" asp-controller="Home" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" name="email" required>
