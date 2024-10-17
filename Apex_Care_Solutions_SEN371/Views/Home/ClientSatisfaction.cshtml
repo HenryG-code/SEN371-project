@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -249,17 +250,17 @@
                 const complaintItem = document.createElement('div');
                 complaintItem.className = 'complaint-item';
                 complaintItem.innerHTML = `
-                        <span><strong>${complaintDetails}</strong><br>${clientName} (Technician: ${technicianName})</span>
-                        <span>${new Date().toLocaleDateString()}</span>
-                    `;
+                                <span><strong>${complaintDetails}</strong><br>${clientName} (Technician: ${technicianName})</span>
+                                <span>${new Date().toLocaleDateString()}</span>
+                            `;
 
                 const feedbackItem = document.createElement('div');
                 feedbackItem.className = 'feedback-item';
                 feedbackItem.innerHTML = `
-                        <span>${clientName}</span>
-                        <span class="rating">No Rating</span>
-                        <span>${complaintDetails}</span>
-                    `;
+                                <span>${clientName}</span>
+                                <span class="rating">No Rating</span>
+                                <span>${complaintDetails}</span>
+                            `;
 
                 complaintsList.prepend(complaintItem); // Add new complaint at the top
                 feedbackList.prepend(feedbackItem); // Add the complaint to feedback section
@@ -283,10 +284,10 @@
                 const feedbackItem = document.createElement('div');
                 feedbackItem.className = 'feedback-item';
                 feedbackItem.innerHTML = `
-                        <span>${feedbackClientName}</span>
-                        <span class="rating">${'★'.repeat(feedbackRating)}${'☆'.repeat(5 - feedbackRating)}</span>
-                        <span>${feedbackComment}</span>
-                    `;
+                                <span>${feedbackClientName}</span>
+                                <span class="rating">${'★'.repeat(feedbackRating)}${'☆'.repeat(5 - feedbackRating)}</span>
+                                <span>${feedbackComment}</span>
+                            `;
 
                 feedbackList.prepend(feedbackItem); // Add new feedback at the top
                 document.getElementById('feedback-client-name').value = '';
@@ -308,9 +309,9 @@
                 const surveyItem = document.createElement('div');
                 surveyItem.className = 'survey-item';
                 surveyItem.innerHTML = `
-                        <span>${selectedSurvey} - Rating: ${surveyRating}</span>
-                        <span>${new Date().toLocaleDateString()}</span>
-                    `;
+                                <span>${selectedSurvey} - Rating: ${surveyRating}</span>
+                                <span>${new Date().toLocaleDateString()}</span>
+                            `;
 
                 surveyResultsList.prepend(surveyItem); // Add new survey result at the top
                 document.getElementById('survey-selection').value = ''; // Reset selection
