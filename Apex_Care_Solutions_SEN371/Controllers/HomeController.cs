@@ -2,6 +2,7 @@ using Apex_Care_Solutions_SEN371.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Diagnostics;
+using static System.Net.WebRequestMethods;
 
 namespace Apex_Care_Solutions_SEN371.Controllers
 {
@@ -221,6 +222,9 @@ namespace Apex_Care_Solutions_SEN371.Controllers
                     string hashedPassword = BCrypt.Net.BCrypt.HashPassword(plainPassword);
                     Debug.WriteLine($"Generated Hashed Password: {hashedPassword}");
                     return Content($"Hashed Password: {hashedPassword}");
+
+                /*https://localhost:<PortYourServerisRunningOn>/Home/GenerateHashedPassword This link will help you generate hashpassword with the plain password being password123 by default*
+                 */
                 }
     }
 }
