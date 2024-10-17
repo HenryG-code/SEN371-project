@@ -107,11 +107,10 @@
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Technician Portal</h1>
 
-
+        <!-- Job Details Section -->
         <div class="job-section">
             <div><strong>Current Job:</strong> Job #123</div>
             <div><strong>Client:</strong> John Doe</div>
@@ -119,7 +118,7 @@
             <div><strong>Issue:</strong> Faulty Connection</div>
         </div>
 
-
+        <!-- Job Status Update Section -->
         <div class="status-section">
             <div><strong>Update Job Status:</strong></div>
             <button class="status-btn" onclick="updateStatus('On Route')">On Route</button>
@@ -131,7 +130,7 @@
         <!-- Display the Updated Status -->
         <div id="job-status">Current Status: Waiting for Update</div>
 
-
+        <!-- SMS Notification Section -->
         <div class="sms-section">
             <div><strong>Send an SMS Notification</strong></div>
             <textarea id="sms-message" rows="4" placeholder="Enter your message here..." style="width: 100%; padding: 10px;"></textarea>
@@ -139,46 +138,44 @@
         </div>
     </div>
 
-    <!-- Client Feedback Section -->
-    <div class="feedback-section">
-        <div><strong>Live Client Feedback</strong></div>
-        <div style="display: flex; align-items: center;">
-            <div>
-                <img src="https://via.placeholder.com/40" alt="client-profile" style="border-radius: 50%; margin-right: 10px;">
-            </div>
-            <div>
-                <strong>Jane Smith</strong><br>
-                <span class="star-rating">★★★★★</span><br>
-                <small>Great service, resolved the issue quickly</small>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
     <script>
-        // Function to update job status on the page
+        // Update the job status on the page
         function updateStatus(status) {
             document.getElementById('job-status').innerText = 'Current Status: ' + status;
             alert('Job status updated to: ' + status);
-            // Add API logic to update status in the backend
         }
 
-        // Placeholder: Send SMS function
-        function sendSMS() {
+        // Send an SMS function
+        async function sendSMS() {
             const message = document.getElementById('sms-message').value;
+            const phoneNumber = '+270728474893'; // Replace with recipient phone number
+
             if (message) {
-                alert('SMS sent: ' + message);
-                // Add API logic to send SMS here
+                try {
+                    const response = await fetch('http://localhost:3001/send-sms', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            to: phoneNumber,
+                            message: message
+                        })
+                    });
+
+                    const result = await response.json();
+                    if (response.ok) {
+                        alert(result.success);
+                    } else {
+                        alert('Error: ' + result.error);
+                    }
+                } catch (error) {
+                    alert('An error occurred while sending the SMS: ' + error.message);
+                }
             } else {
                 alert('Please enter a message to send.');
             }
         }
     </script>
-
 </body>
 </html>
