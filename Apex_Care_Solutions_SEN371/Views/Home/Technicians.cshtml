@@ -139,6 +139,12 @@
     </div>
 
     <script>
+        function sendSMS(){
+            alert("Sending sms to assigned technician!")
+        }
+    </script>
+
+    <script>
         // Update the job status on the page
         function updateStatus(status) {
             document.getElementById('job-status').innerText = 'Current Status: ' + status;
@@ -166,15 +172,15 @@
                     const result = await response.json();
                     if (response.ok) {
                         alert(result.success);
-                    } else {
-                        alert('Error: ' + result.error);
-                    }
-                } catch (error) {
-                    alert('An error occurred while sending the SMS: ' + error.message);
-                }
-            } else {
-                alert('Please enter a message to send.');
-            }
+            //         } else {
+            //             alert('Error: ' + result.error);
+            //         }
+            //     } catch (error) {
+            //         alert('An error occurred while sending the SMS: ' + error.message);
+            //     }
+            // } else {
+            //     alert('Please enter a message to send.');
+            // }
         }
     </script>
 </body>
