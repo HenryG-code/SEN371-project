@@ -215,7 +215,7 @@
 
         <div class="container-3">
             <h2>Performance Metrics</h2>
-            <button class="view-details">View Details ></button>
+            <button class="view-details" onclick="updateStatus('View Details')">View Details</button>
         </div>
 
         <div class="metrics">
@@ -233,6 +233,11 @@
         <p class="quarterly-overview">Quarterly Overview</p>
     </div>
 
+    <script>
+        function updateStatus() {
+            alert("View Details clicked!");
+        }
+    </script>
 
 </body>
 </html>

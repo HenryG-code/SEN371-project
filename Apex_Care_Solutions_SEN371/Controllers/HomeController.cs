@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Diagnostics;
 using static System.Net.WebRequestMethods;
+using Microsoft.AspNetCore.Http; // For session handling
 
 namespace Apex_Care_Solutions_SEN371.Controllers
 {
@@ -52,6 +53,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
 
         public IActionResult ClientManagement()
         {
+           
             return View();
         }
 
@@ -213,9 +215,10 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             userType = null;
             return false;
         }
+      
 
-                // Temporary action for generating hashed passwords
-                public IActionResult GenerateHashedPassword()
+        // Temporary action for generating hashed passwords
+        public IActionResult GenerateHashedPassword()
                 {
                     string plainPassword = "password123";  // Replace with the password you want to hash
                     string hashedPassword = BCrypt.Net.BCrypt.HashPassword(plainPassword);
