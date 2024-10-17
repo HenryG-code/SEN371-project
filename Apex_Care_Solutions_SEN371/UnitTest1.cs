@@ -28,4 +28,20 @@ public class HomeControllerTests
         Assert.NotNull(result);
         Assert.Equal("ClientManagement", result.ActionName);
     }
+
+    [Fact]
+    public void Login_InvalidCredentials_ShouldReturnViewWithErrorMessage()
+    {
+        // Arrange
+        string username = "invaliduser";
+        string password = "wrongpassword";
+
+        // Act
+        var result = _controller.Login(username, password) as ViewResult;
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal("Invalid username or password.", _controller.ViewBag.ErrorMessage);
+    }
+
 }
