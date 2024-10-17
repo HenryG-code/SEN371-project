@@ -13,9 +13,9 @@ namespace Apex_Care_Solutions_SEN371.Controllers
 
         public HomeController(IConfiguration configuration)
         {
-            // Option to use configuration values from appsettings.json
-            string connectionString1 = configuration.GetConnectionString("CyberWizard");
-            string connectionString2 = configuration.GetConnectionString("HenryPC");
+            // Use GetSection("ConnectionStrings:<name>").Value instead of GetConnectionString("<name>")
+            string connectionString1 = configuration.GetSection("ConnectionStrings:CyberWizard").Value;
+            string connectionString2 = configuration.GetSection("ConnectionStrings:HenryPC").Value;
 
             // Use Environment.MachineName or another condition to pick the right connection string
             if (Environment.MachineName == "THECYBERWIZARD")
@@ -28,8 +28,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             }
             else
             {
-                // Default or fallback connection string
-                _connectionString = connectionString1;
+                _connectionString = connectionString1;  // Default connection string
             }
 
             Debug.WriteLine($"Using Connection String: {_connectionString}");
