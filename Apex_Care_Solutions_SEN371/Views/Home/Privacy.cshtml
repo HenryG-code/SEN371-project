@@ -25,20 +25,15 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Updated header to be centered and bigger */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-            header h1 {
-                font-size: 20px;
-            }
-
-            header .back-btn {
-                font-size: 18px;
-                text-decoration: none;
-                color: #333;
+            header h2 {
+                font-size: 28px;
+                font-weight: bold;
             }
 
         .client-info {
@@ -47,11 +42,8 @@
             margin-bottom: 20px;
         }
 
-            .client-info img {
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-                margin-right: 10px;
+            .client-info h1 {
+                font-size: 22px;
             }
 
         .available-services {
@@ -64,16 +56,16 @@
             justify-content: space-between;
             padding: 10px;
             border-bottom: 1px solid #ddd;
-            cursor: pointer; /* Add cursor pointer for interactivity */
+            cursor: pointer;
         }
 
             .service-item:hover {
-                background-color: #f0f0f0; 
+                background-color: #f0f0f0;
             }
 
         .service-details {
             margin-bottom: 20px;
-            display: none; /* Initially hidden */
+            display: none;
         }
 
             .service-details h3 {
@@ -142,20 +134,19 @@
 
     <div class="container">
 
-        <!-- Header Section -->
+        <!-- Updated Header Section - Centered and Larger -->
         <header>
-            <a href="#" class="back-btn">&#x2190;</a>
             <h2>Contract Management</h2>
         </header>
 
         <!-- Client Info -->
         <div class="client-info">
-            <h1>Client Name Here</h1>
+            <h1>John Doe</h1>
         </div>
 
         <!-- Contract Info -->
         <div class="contract-info">
-            <h1>Current Contract Name Here</h1>
+            <h1>Service A</h1>
         </div>
 
         <!-- Available Services Section -->
@@ -181,8 +172,8 @@
                     <li>Feature 1: Detailed analytics</li>
                     <li>Feature 2: 24/7 support</li>
                     <li>Feature 3: Customizable options</li>
-                    <li>Fault Urgency: **High**</li>
-                    <li>Maintenance Response: **Urgent** response within 1 hour</li>
+                    <li>Fault Urgency: <strong>High</strong></li>
+                    <li>Maintenance Response: <strong>Urgent</strong> response within 1 hour</li>
                 </ul>
             </div>
             <div id="serviceB" class="service-feature" style="display: none;">
@@ -191,8 +182,8 @@
                 <ul>
                     <li>Feature 1: Basic analytics</li>
                     <li>Feature 2: Email support</li>
-                    <li>Fault Urgency: **Medium**</li>
-                    <li>Maintenance Response: **Standard** response within 4 hours</li>
+                    <li>Fault Urgency: <strong>Medium</strong></li>
+                    <li>Maintenance Response: <strong>Standard</strong> response within 4 hours</li>
                 </ul>
             </div>
         </div>
@@ -251,15 +242,15 @@
             const uptime = document.getElementById('metric-uptime');
 
             if (service === 'serviceA') {
-                responseTime.querySelector('h2').innerText = '99%'; 
-                responseTime.querySelector('p:last-child').innerText = '-1%'; 
-                uptime.querySelector('h2').innerText = '99.8%'; 
-                uptime.querySelector('p:last-child').innerText = '+0.3%'; 
+                responseTime.querySelector('h2').innerText = '99%';
+                responseTime.querySelector('p:last-child').innerText = '-1%';
+                uptime.querySelector('h2').innerText = '99.8%';
+                uptime.querySelector('p:last-child').innerText = '+0.3%';
             } else if (service === 'serviceB') {
-                responseTime.querySelector('h2').innerText = '96%'; 
-                responseTime.querySelector('p:last-child').innerText = '-2%'; 
-                uptime.querySelector('h2').innerText = '98.5%'; 
-                uptime.querySelector('p:last-child').innerText = '-0.5%'; 
+                responseTime.querySelector('h2').innerText = '96%';
+                responseTime.querySelector('p:last-child').innerText = '-2%';
+                uptime.querySelector('h2').innerText = '98.5%';
+                uptime.querySelector('p:last-child').innerText = '-0.5%';
             }
         }
 
