@@ -49,6 +49,7 @@
         nav .auth-buttons {
             display: flex;
             gap: 10px;
+            align-items: center;
         }
 
         .auth-buttons button {
@@ -159,23 +160,13 @@
         <h1>ApexCare Solutions</h1>
         <h2>We strive to provide you with the best service</h2>
 
-        <div class="main-buttons">
-            <button>View Technician Schedule</button>
-            <button>Book Appointment</button>
+        <div class="auth-buttons">
+            <button onclick="location.href='@Url.Action("ServiceDesk", "Home")'" class="btn btn-dark">Log a fault</button>
+            <button onclick="location.href='@Url.Action("Privacy", "Home")'" class="btn btn-outline-dark">View Contracts</button>
         </div>
 
-        <h2>Contract Status</h2>
-        <h2>Subheading</h2>
     </main>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-content">
-            <div class="logo">
-            </div>
-
-        </div>
-    </footer>
 
 </body>
 </html>

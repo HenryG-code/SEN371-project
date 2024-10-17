@@ -20,6 +20,8 @@
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
+            padding-bottom: 70px;
+            margin-bottom: 100px;
         }
 
         h1 {
@@ -90,8 +92,18 @@
         #job-status {
             font-weight: bold;
             color: green;
-            margin-top: 20px;
         }
+
+        .feedback-section {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .star-rating {
+			color: gold;
+		}
+
+
     </style>
 </head>
 <body>
@@ -127,17 +139,26 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    <div class="nav">
-        <div class="nav-item">
-            <img src="https://via.placeholder.com/24" alt="home-icon">
-            <div>Home</div>
-        </div>
-        <div class="nav-item">
-            <img src="https://via.placeholder.com/24" alt="contact-icon">
-            <div>Contact</div>
+    <!-- Client Feedback Section -->
+    <div class="feedback-section">
+        <div><strong>Live Client Feedback</strong></div>
+        <div style="display: flex; align-items: center;">
+            <div>
+                <img src="https://via.placeholder.com/40" alt="client-profile" style="border-radius: 50%; margin-right: 10px;">
+            </div>
+            <div>
+                <strong>Jane Smith</strong><br>
+                <span class="star-rating">★★★★★</span><br>
+                <small>Great service, resolved the issue quickly</small>
+            </div>
         </div>
     </div>
+
+
+
+
+
+
 
     <script>
         // Function to update job status on the page

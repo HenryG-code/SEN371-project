@@ -1,35 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    <div class="text-center">
-
-        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
-            Go to the Client Page
-        </a>
-
-        <a href="@Url.Action("ClientSatisfaction", "Home")" class="btn btn-primary">
-            Go to Client Satisfaction Services
-        </a>
-
-        <a href="@Url.Action("ClientManagement", "Home")" class="btn btn-primary">
-            Go to Client Management Services
-        </a>
-
-        <a href="@Url.Action("Technicians", "Home")" class="btn btn-primary">
-            Go to Technicians
-        </a>
-
-        <a href="@Url.Action("ServiceDesk", "Home")" class="btn btn-primary">
-            Go to Service Desk
-        </a>
-
-        <a href="@Url.Action("Privacy", "Home")" class="btn btn-primary">
-            Go to the Contract Management Page
-        </a>
-
-    </div>
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -115,27 +84,27 @@
             }
 
         .buttons {
-            display: flex;
+            display: center;
             justify-content: space-between;
         }
 
             .buttons button {
-                padding: 15px;
-                width: 48%;
+                width: 100%;
                 border: none;
                 cursor: pointer;
                 border-radius: 5px;
                 font-size: 16px;
+                padding-bottom: 10px;
+                margin-bottom: 50px;
             }
 
-                .buttons button.create-task {
-                    background-color: #f8f9fa;
-                }
+            .follow-up {
+				background-color: #000;
+				color: #fff;
+			}
+                
 
-                .buttons button.follow-up {
-                    background-color: #000;
-                    color: white;
-                }
+
     </style>
 </head>
 <body>
@@ -207,11 +176,11 @@
         </div>
 
         <div class="buttons">
-            <button class="create-task">Create Follow-up Task</button>
             <button class="follow-up">Initiate Follow-up Call</button>
         </div>
 
     </div>
+    <p></p>
 
 </body>
 </html>
