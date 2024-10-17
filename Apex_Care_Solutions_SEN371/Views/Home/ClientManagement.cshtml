@@ -4,8 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Satisfaction Services</title>
+    <title>Client Management</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
         .header {
             background-color: #fff;
             padding: 15px;
@@ -13,229 +20,249 @@
             border-bottom: 1px solid #ccc;
         }
 
-        .button-ConStatus{
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10%;
+        }
+
+        .button-ConStatus {
             display: flex;
             justify-content: space-around;
             margin-bottom: 20px;
         }
 
             .button-ConStatus button {
-            padding: 10px 20px;
-            background-color: #e9ecef;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+                padding: 10px 20px;
+                background-color: #e9ecef;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+            }
 
-        .relationship-manager{
+        .relationship-manager {
             display: flex;
             justify-content: space-around;
             margin-bottom: 20px;
         }
 
-        .recommended-services{
+        .service-details {
+            margin-top: 20px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+            .service-details p {
+                margin: 10px 0;
+                font-size: 16px;
+            }
+
+        .form-container {
             text-align: center;
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
-        .services{
-            text-align: center;
-            margin-bottom: 20px;
+        .form-field {
+            margin-bottom: 15px;
         }
 
-        .best-seller{
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .container2 {
-            text-align: center; /* Center text inside the container */
-            display: inline-block; /* Allow the div to shrink to fit its content */
-            border: 1px solid #ccc; /* Optional: Add a border for visibility */
-            padding: 10px; /* Optional: Add some padding for aesthetics */
-            margin-left:40%;
-            margin-right:40%
-        }
-
-        #icon {
-            margin-left: 5px;
-            margin-right: 5px;
-        }
-
-        .feedback-item {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-            .feedback-item span {
+            .form-field label {
                 display: block;
-                margin-top: 5px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .form-field input {
+                padding: 10px;
+                width: 80%;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+        .update-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .update-btn:hover {
+                background-color: #0056b3;
+            }
+
+        /* Space at the bottom to prevent footer overlap */
+        .container::after {
+            content: '';
+            display: block;
+            height: 50px; /* Adjust height to prevent footer overlap */
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .client-details {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+            .client-details img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .client-details p {
+                margin: 10px 0;
+                font-size: 16px;
+            }
+
+            .client-details .detail-label {
                 font-weight: bold;
             }
-
-            .feedback-item .rating {
-                color: gold;
-                font-size: 18px;
-            }
-
-        .container-3{
-            background-color: #ffffff; /* White background for the card */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            padding: 20px; /* Padding inside the card */
-            max-width: 600px; /* Max width for the card */
-            margin: auto; /* Center the card */
-        }
-
-        .header {
-            display: flex; /* Flexbox layout for header */
-            justify-content: space-between; /* Space between elements */
-            align-items: center; /* Center items vertically */
-        }
-
-        .view-details {
-            background-color: #007bff; /* Blue background for button */
-            color: white; /* White text color */
-            border: none; /* Remove border */
-            padding: 10px 15px; /* Padding for the button */
-            border-radius: 5px; /* Rounded corners for button */
-            cursor: pointer; /* Pointer cursor on hover */
-        }
-
-        .metrics {
-            display: flex; /* Flexbox layout for metrics */
-            justify-content: space-between; /* Space between metric cards */
-            margin-top: 20px; /* Space above the metrics */
-        }
-
-        .metric {
-            background-color: #f8f9fa; /* Light gray background for metric */
-            border-radius: 5px; /* Rounded corners for metric */
-            padding: 15px; /* Padding inside the metric */
-            flex: 1; /* Allow metrics to grow equally */
-            margin: 0 10px; /* Space between metric cards */
-            text-align: center; /* Center text inside metrics */
-        }
-
-            .metric h3 {
-                margin: 0; /* Remove default margin */
-            }
-
-        .change {
-            font-weight: bold; /* Bold for the change percentage */
-        }
-
-        .quarterly-overview {
-            text-align: center; /* Center the overview text */
-            margin-top: 20px; /* Space above the overview text */
-            font-style: italic; /* Italicize the overview text */
-            color: #666; /* Gray color for the overview text */
-        }
-
     </style>
 </head>
-
 <body>
+
     <div class="header">
         <h1>Client Management</h1>
     </div>
 
+    <!-- Main Container -->
     <div class="container">
 
+        <div class="client-details">
+            <h2>Client Details</h2>
+            <div>
+                <p class="detail-label">Name: <span id="display-client-name">John Doe</span></p>
+            </div>
+            <div>
+                <p class="detail-label">Email: <span id="display-client-email">john.doe@example.com</span></p>
+            </div>
+            <div>
+                <p class="detail-label">Phone: <span id="display-client-phone">+1234567890</span></p>
+            </div>
+            <div>
+                <p class="detail-label">Address: <span id="display-client-address">123 Main St, City, Country</span></p>
+            </div>
+        </div>
+
         <div class="button-ConStatus">
-            <button>
+            <!-- Contract Status with Image -->
+            <button onclick="showContractStatus()">
                 <img src="/images/rocket.jpg" style="width:120px; height:120px;"><br>
                 Contract Status
             </button>
-        </div>
 
-        <div class="relationship-manager">
-            <p>Client Relationship Manager</p>
-        </div>
-
-        <div class="recommended-services">
-            Recommended Services
-            <div class="services">
-                <button>
-                    <img src="/images/service.jpg" style="width:120px; height:120px;"><br />
-                    Service Name
-                </button>
-
-                <p>Price:R1000</p>
-                <p>★ </p>
-            </div>
-        </div>
-
-        <div class="best-seller">
-            <button>
-                <img src="/images/OIP.jpg" style="width:120px; height:120px;">
-                Service Name
+            <!-- Service A Button with Image -->
+            <button onclick="showServiceDetails('A')">
+                <img src="/images/service.jpg" style="width:120px; height:120px;"><br>
+                Service A
             </button>
 
-            <p>Price:R800</p>
-            <p>★ </p>
+            <!-- Service B Button with Image -->
+            <button onclick="showServiceDetails('B')">
+                <img src="/images/OIP.jpg" style="width:120px; height:120px;"><br>
+                Service B
+            </button>
         </div>
 
-        <div class="container2">
-            Client Notes <br />
-            <span>
-                Meeting Summary
-                <img id="icon" src="/images/pen.jpg" style="width:40px; height:40px;">
-            </span>
-            <span>12/11/2021</span>
-
-            <br />
-            <span>
-                Follow-up Reminder
-                <img src="~/images/bell.png" style="width:40px; height:40px;" />
-            </span>
-            <span>12/15/2022</span>
+        <!-- Service Details Display -->
+        <div id="service-details" class="service-details" style="display: none;">
+            <h2>Service Details</h2>
+            <p id="service-description"></p>
         </div>
 
-
-
-        <div class="feedback-section">
-            
-            <div class="feedback-item">
-                <h2>Client Feedback</h2>
-                <span>Client A</span>
-                <span class="rating">★★★★★</span>
-                <span>Great service, very responsive!</span>
-                <div>👍 👎</div>
-
-                <span>Client B</span>
-                <span class="rating">★★★★★</span>
-                <span>Satisfied with the contract terms.</span>
-                <div>👍 👎</div>
+        <!-- Form to update client details -->
+        <div class="form-container">
+            <h2>Update Client Details</h2>
+            <div class="form-field">
+                <label for="client-name">Client Name</label>
+                <input type="text" id="client-name" placeholder="Enter client's name">
             </div>
+            <div class="form-field">
+                <label for="client-email">Client Email</label>
+                <input type="email" id="client-email" placeholder="Enter client's email">
+            </div>
+            <div class="form-field">
+                <label for="client-phone">Client Phone</label>
+                <input type="tel" id="client-phone" placeholder="Enter client's phone number">
+            </div>
+            <div class="form-field">
+                <label for="client-address">Client Address</label>
+                <input type="text" id="client-address" placeholder="Enter client's address">
+            </div>
+
+            <!-- Update details button -->
+            <button class="update-btn" onclick="updateDetails()">Update Details</button>
         </div>
 
-        <div class="container-3">
-            <h2>Performance Metrics</h2>
-            <button class="view-details" onclick="updateStatus('View Details')">View Details</button>
-        </div>
+    </div>
 
-        <div class="metrics">
-            <div class="metric">
-                <h3>Revenue</h3>
-                <p>R100,000</p>
-                <p class="change">+10%</p>
-            </div>
-            <div class="metric">
-                <h3>Client Satisfaction</h3>
-                <p>95%</p>
-                <p class="change">-5%</p>
-            </div>
-        </div>
-        <p class="quarterly-overview">Quarterly Overview</p>
+    <!-- Footer Section -->
+    <div class="footer">
+        <p></p>
     </div>
 
     <script>
-        function updateStatus() {
-            alert("View Details clicked!");
+        function showContractStatus() {
+            const contractStatus = true; // Assume the contract status is stored as a boolean
+
+            if (contractStatus) {
+                alert("Client has an active contract.");
+            } else {
+                alert("Client does not have a contract.");
+            }
+        }
+
+        function showServiceDetails(service) {
+            const serviceDetails = {
+                'A': `Service A<br />
+                            High-performance service with advanced features including:<br />
+                            Feature 1: Detailed analytics<br />
+                            Feature 2: 24/7 support<br />
+                            Feature 3: Customizable options<br />
+                            Fault Urgency: <strong>High</strong><br />
+                            Maintenance Response: <strong>Urgent</strong> response within 1 hour`,
+                'B': `Service B<br />
+                            Reliable service with standard features including:<br />
+                            Feature 1: Basic analytics<br />
+                            Feature 2: Email support<br />
+                            Fault Urgency: <strong>Medium</strong><br />
+                            Maintenance Response: <strong>Standard</strong> response within 4 hours`
+            };
+
+            document.getElementById('service-description').innerHTML = serviceDetails[service];
+            document.getElementById('service-details').style.display = 'block';
+        }
+
+        function updateDetails() {
+            const name = document.getElementById('client-name').value;
+            const email = document.getElementById('client-email').value;
+            const phone = document.getElementById('client-phone').value;
+            const address = document.getElementById('client-address').value;
+
+            // Update the display section with the new client details
+            document.getElementById('display-client-name').innerText = name || 'John Doe';
+            document.getElementById('display-client-email').innerText = email || 'john.doe@example.com';
+            document.getElementById('display-client-phone').innerText = phone || '+1234567890';
+            document.getElementById('display-client-address').innerText = address || '123 Main St, City, Country';
+
+            alert(`Client details updated:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}`);
         }
     </script>
 
