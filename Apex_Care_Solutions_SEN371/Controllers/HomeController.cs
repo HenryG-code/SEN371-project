@@ -166,7 +166,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
                 else if (TryAuthenticateUser(connection, "Technicians", username, password, out userType))
                 {
                     Debug.WriteLine("Login successful for Technician.");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Technicians", "Home");
                 }
             }
 
