@@ -1,10 +1,13 @@
-﻿﻿
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Call and Fault Report Management</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Apex_Care_Solutions_SEN371.styles.css" asp-append-version="true" />
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,7 +55,6 @@
             color: #fff;
         }
 
-
         .nav {
             position: fixed;
             bottom: 0;
@@ -72,10 +74,9 @@
                 width: 24px;
                 height: 24px;
             }
-
-
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -83,46 +84,124 @@
 
         <!-- Client Data and Service History Section -->
         <div class="client-info">
-            <div><strong>Client Name:</strong> Client Name Here</div>
-            <div><strong>Last Service Date:</strong> Last service date here</div>
+            <div>Client Name: <span id="client-name">Client Name Here</span></div>
+            <div>Last Service Date: <span id="last-service">None</span></div>
+        </div>
+
+        <!-- Fault Reporting Section -->
+        <div class="fault-reporting">
+            <h3>Report a Fault</h3>
+            <div>
+                <label for="fault-reason-input">Fault Reason:</label>
+                <input type="text" id="fault-reason-input" placeholder="Enter fault reason" class="form-control" />
+            </div>
+            <div>
+                <label for="fault-priority-input">Priority:</label>
+                <select id="fault-priority-input" class="form-control">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+            </div>
+            <button class="btn" onclick="reportFault()">Submit Fault</button>
         </div>
 
         <!-- Reported Issues Section -->
         <div class="reported-issues">
             <div><strong>Reported Issues</strong></div>
             <div style="border: 1px solid #ccc; padding: 15px;">
-                <div style="margin-bottom: 10px;">Status: <span style="background-color: #e0e0e0; padding: 3px;">Maybe we can grab the status from the Technician page and display here?</span></div>
+                <div style="margin-bottom: 10px;">Status: <span style="background-color: #e0e0e0; padding: 3px;">Status information can be displayed here.</span></div>
                 <div style="background-color: #f5f5f5; height: 150px; display: flex; align-items: center; justify-content: center;">
                     <span>Image Placeholder</span>
                 </div>
-                <div>Fault Reason Here</div>
-                <div>Priority: <strong>Client Priority Here</strong></div>
-                <div>Priority: <strong>Assigned Technician Name</strong></div>
+                <div>Fault Reason: <span id="fault-reason">Undefined</span></div>
+                <div>Current Priority: <span id="current-priority">Low</span></div>
+                <div>Assigned Technician: <span id="assigned-technician">None</span></div>
+                <div>Technician Number: <span id="technician-number">None</span></div>
             </div>
         </div>
 
-        <!-- Action Buttons -->
-        <button class="btn" onclick="logInteraction()">Log a fault</button>
+        <button class="btn" onclick="viewFaultDetails()">View Details</button>
         <button class="btn" onclick="changePriority()">Escalate Issue</button>
-        <button class="btn btn-black" onclick="assignWorkRequest()">Maybe have the SMS section here to send a direct SMS to your technician?</button>
+        <button class="btn btn-black" onclick="assignWorkRequest()">Send SMS to Technician</button>
+    </div>
 
+    <script>
+        // Sample client data we can replace with our CS backend objects
+        const placeholderClient = {
+            ClientID: "12345",
+            ClientName: "John Doe",
+            LastServiceDate: "2024-10-01",
+            ContractStatus: "Active",
+            Priority: "Medium",
+            FaultReason: "Slow Connection"
 
-        <script>
-            function changePriority() {
-                alert('Change Priority button clicked');
+        };
 
+        function populateClientDetails() {
+            document.getElementById('client-name').innerText = placeholderClient.ClientName;
+            document.getElementById('last-service').innerText = placeholderClient.LastServiceDate;
+            document.getElementById('current-priority').innerText = placeholderClient.Priority;
+            document.getElementById('fault-reason').innerText = placeholderClient.FaultReason;
+
+            // Update reported issues section with default values
+            document.getElementById('assigned-technician').innerText = "None"; // Default value
+            document.getElementById('technician-number').innerText = "None"; // Default value
+        }
+
+        function reportFault() {
+            // Get values from input fields
+            const faultReason = document.getElementById('fault-reason-input').value;
+            const faultPriority = document.getElementById('fault-priority-input').value;
+
+            // Update the reported issues section
+            document.getElementById('fault-reason').innerText = faultReason || "Undefined";
+            document.getElementById('current-priority').innerText = faultPriority || "Low";
+
+            // Clear input fields
+            document.getElementById('fault-reason-input').value = '';
+            document.getElementById('fault-priority-input').value = 'Low'; // Reset to default
+
+            alert('Fault reported successfully!');
+        }
+
+        function viewFaultDetails() {
+            const clientName = document.getElementById('client-name').innerText;
+            const faultReason = document.getElementById('fault-reason').innerText;
+            const priority = document.getElementById('current-priority').innerText;
+            const lastDate = document.getElementById('last-service').innerText;
+            const dateReported = new Date().toLocaleString();
+
+            const faultDetails = `Fault Reported:\nClient: ${clientName}\nReason: ${faultReason}\nPriority: ${priority}\nLast Service: ${lastDate}\nDate: ${dateReported}`;
+            alert(faultDetails);
+
+            console.log(faultDetails); // We can save it into the database here
+        }
+
+        function changePriority() {
+            const priorityLevels = ['Low', 'Medium', 'High', 'Urgent'];
+            let currentPriorityIndex = priorityLevels.indexOf(document.getElementById('current-priority').innerText);
+
+            if (currentPriorityIndex < priorityLevels.length - 1) {
+                currentPriorityIndex++;
+                document.getElementById('current-priority').innerText = priorityLevels[currentPriorityIndex];
+                alert(`Priority increased to ${priorityLevels[currentPriorityIndex]}`);
+            } else {
+                alert('Priority is already at the highest level: Urgent.');
             }
+        }
 
-            function logInteraction() {
-                alert('Log Interaction button clicked');
+        function assignWorkRequest() {
+            alert('Assign Work Request button clicked');
+            // We can do the API section here as well
+        }
 
-            }
-
-            function assignWorkRequest() {
-                alert('Assign Work Request button clicked');
-
-            }
-        </script>
+        // Call the function on page load
+        window.onload = function () {
+            populateClientDetails();
+        };
+    </script>
 
 </body>
 </html>
