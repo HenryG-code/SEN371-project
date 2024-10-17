@@ -69,34 +69,61 @@ namespace Apex_Care_Solutions_SEN371.Controllers
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                connection.Open();
-
-                // Hash the password
-                string passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
-                Debug.WriteLine($"Hashed Password: {passwordHash}");
-
-                // Insert into Clients table
-                string insertQuery = "INSERT INTO Clients (Username, PasswordHash, Name, Email) VALUES (@Username, @Password, @Name, @Email)";
-
-                using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@Username", username);
-                    command.Parameters.AddWithValue("@Password", passwordHash);
-                    command.Parameters.AddWithValue("@Name", name);
-                    command.Parameters.AddWithValue("@Email", email);
+                    connection.Open();
 
-                    int rowsAffected = command.ExecuteNonQuery();
-                    Debug.WriteLine($"Rows affected during registration: {rowsAffected}");
+                    // Hash the password
+                    string passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+                    Debug.WriteLine($"Hashed Password: {passwordHash}");
 
-                    if (rowsAffected > 0)
+                    // Insert into Clients table
+                    string insertQuery = "INSERT INTO Clients (Username, PasswordHash, Name, Email) VALUES (@Username, @Password, @Name, @Email)";
+
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
                     {
-                        return RedirectToAction("Login", "Home");
+                        command.Parameters.AddWithValue("@Username", username);
+                        command.Parameters.AddWithValue("@Password", passwordHash);
+                        command.Parameters.AddWithValue("@Name", name);
+                        command.Parameters.AddWithValue("@Email", email);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        Debug.WriteLine($"Rows affected during registration: {rowsAffected}");
+
+                        if (rowsAffected > 0)
+                        {
+                            return RedirectToAction("Login", "Home");
+                        }
+                        else
+                        {
+                            ViewBag.ErrorMessage = "Registration failed. Please try again.";
+                            return View();
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    // Check for unique constraint violation (error code 2627 is for unique constraint violations)
+                    if (ex.Number == 2627) // Error code for unique constraint violation
+                    {
+                        ViewBag.ErrorMessage = "The username is already taken. Please choose another one.";
+                        Debug.WriteLine($"Error: {ex.Message}");
+                        return View();
                     }
                     else
                     {
-                        ViewBag.ErrorMessage = "Registration failed. Please try again.";
+                        // Log or handle other types of SQL exceptions
+                        ViewBag.ErrorMessage = "An error occurred during registration. Please try again.";
+                        Debug.WriteLine($"SQL Error: {ex.Message}");
                         return View();
                     }
+                }
+                catch (Exception ex)
+                {
+                    // Handle other general exceptions
+                    ViewBag.ErrorMessage = "An unexpected error occurred. Please try again.";
+                    Debug.WriteLine($"General Error: {ex.Message}");
+                    return View();
                 }
             }
         }
