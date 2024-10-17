@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, content=initial-scale=1.0">
     <title>Client Satisfaction Services</title>
     <style>
         body {
@@ -37,17 +37,19 @@
                 border-radius: 5px;
             }
 
-                .button-row button img {
-                    width: 50px;
-                    height: 50px;
-                }
-
         .complaints-section,
-        .feedback-section {
+        .feedback-section,
+        .technician-reviews-section,
+        .follow-up-section,
+        .survey-section {
             margin-bottom: 20px;
+            display: none; /* Initially hidden */
         }
 
-        .complaint-item {
+        .complaint-item,
+        .feedback-item,
+        .review-item,
+        .survey-item {
             display: flex;
             justify-content: space-between;
             padding: 10px;
@@ -56,15 +58,19 @@
             margin-bottom: 5px;
         }
 
-        .record-complaint input {
-            width: 100%;
+        .record-complaint input,
+        .record-feedback input,
+        .record-survey select {
+            width: calc(100% - 22px);
             padding: 10px;
             margin-top: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        .feedback-item {
+        .feedback-item,
+        .review-item,
+        .survey-item {
             background-color: #fff;
             padding: 15px;
             border-radius: 5px;
@@ -72,13 +78,16 @@
             text-align: center;
         }
 
-            .feedback-item span {
+            .feedback-item span,
+            .review-item span,
+            .survey-item span {
                 display: block;
                 margin-top: 5px;
                 font-weight: bold;
             }
 
-            .feedback-item .rating {
+            .feedback-item .rating,
+            .review-item .rating {
                 color: gold;
                 font-size: 18px;
             }
@@ -98,13 +107,15 @@
                 margin-bottom: 50px;
             }
 
-            .follow-up {
-				background-color: #000;
-				color: #fff;
-			}
-                
+        .follow-up {
+            background-color: #000;
+            color: #fff;
+        }
 
-
+        /* Show the complaints section by default */
+        .complaints-section {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -116,71 +127,232 @@
     <div class="container">
 
         <div class="button-row">
-            <button>
-                <img src="complaint_icon.png" alt="Client Complaints"><br>
-                Client Complaints
-            </button>
-            <button>
-                <img src="interaction_icon.png" alt="Interactions"><br>
-                Interactions
-            </button>
-            <button>
-                <img src="followup_icon.png" alt="Follow-up Actions"><br>
-                Follow-up Actions
-            </button>
-            <button>
-                <img src="survey_icon.png" alt="Feedback Surveys"><br>
-                Feedback Surveys
-            </button>
+            <button id="my-feedback-button">My Feedback</button>
+            <button id="technician-reviews-button">Technician Reviews</button>
+            <button id="survey-results-button">Survey Results</button>
+            <button id="add-complaint-button">Add Complaint</button>
         </div>
 
-        <div class="complaints-section">
-            <h2>Recent Complaints</h2>
-
-            <div class="complaint-item">
-                <span><strong>Issue with Product XYZ</strong><br>Client A</span>
-                <span>12/10/2021</span>
-            </div>
-
-            <div class="complaint-item">
-                <span><strong>Delayed Service</strong><br>Client B</span>
-                <span>12/11/2021</span>
-            </div>
-
+        <!-- Add Complaint Section -->
+        <div class="complaints-section" id="complaints-section">
+            <h2>Add a New Complaint</h2>
             <div class="record-complaint">
-                <label for="complaint-details">Record New Complaint</label>
+                <label for="client-name">Client Name</label>
+                <input type="text" id="client-name" placeholder="Enter your name">
+
+                <label for="technician-name">Technician Name</label>
+                <input type="text" id="technician-name" placeholder="Enter technician's name">
+
+                <label for="complaint-details">Complaint Details</label>
                 <input type="text" id="complaint-details" placeholder="Enter complaint details">
+
+                <button id="submit-complaint">Submit Complaint</button>
             </div>
 
-            <div class="service-rep">
-                <p><strong>John Doe</strong><br>Customer Service Rep</p>
+            <div id="complaints-list"></div>
+        </div>
+
+        <!-- My Feedback Section -->
+        <div class="feedback-section" id="feedback-section">
+            <h2>My Feedback</h2>
+            <div class="record-feedback">
+                <label for="feedback-client-name">Your Name</label>
+                <input type="text" id="feedback-client-name" placeholder="Enter your name">
+
+                <label for="feedback-comment">Feedback</label>
+                <input type="text" id="feedback-comment" placeholder="Enter your feedback">
+
+                <label for="feedback-rating">Rating (1 to 5)</label>
+                <select id="feedback-rating">
+                    <option value="">Select a rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <button id="submit-feedback">Submit Feedback</button>
+            </div>
+
+            <div id="feedback-list"></div>
+        </div>
+
+        <!-- Technician Reviews Section -->
+        <div class="technician-reviews-section" id="technician-reviews-section">
+            <h2>Technician Reviews</h2>
+            <div id="reviews-list">
+                <div class="review-item">
+                    <span>Technician A</span>
+                    <span class="rating">★★★★☆</span>
+                    <span>Excellent service and support!</span>
+                </div>
+
+                <div class="review-item">
+                    <span>Technician B</span>
+                    <span class="rating">★★★★★</span>
+                    <span>Very knowledgeable and helpful.</span>
+                </div>
             </div>
         </div>
 
-        <div class="feedback-section">
-            <h2>Client Feedback</h2>
+        <!-- Survey Results Section -->
+        <div class="survey-section" id="survey-section">
+            <h2>Survey Results</h2>
+            <div id="survey-results-list"></div>
 
-            <div class="feedback-item">
-                <span>Client C</span>
-                <span class="rating">★★★★★</span>
-                <span>Exceptional service provided!</span>
-                <div>👍 👎</div>
-            </div>
+            <h3>Choose a Survey to Fill In</h3>
+            <select id="survey-selection">
+                <option value="">Select a survey</option>
+                <option value="Survey A">Customer Satisfaction</option>
+                <option value="Survey B">Service Efficiency</option>
+                <option value="Survey C">Technical Support</option>
+            </select>
+            <label for="survey-rating">Rating (1 to 5)</label>
+            <select id="survey-rating">
+                <option value="">Select a rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button id="fill-survey-button">Fill Survey</button>
 
-            <div class="feedback-item">
-                <span>Client D</span>
-                <span class="rating">★★★★★</span>
-                <span>Quick resolution to my issue.</span>
-                <div>👍 👎</div>
-            </div>
+            <div id="survey-response"></div>
+        </div>
+
+        <!-- Follow-up Call Section -->
+        <div class="follow-up-section" id="follow-up-section">
+            <h2>Follow-up Call</h2>
+            <p>Our team would like to schedule a follow-up call with you to discuss your feedback and any additional concerns.</p>
+            <p>Please call us at <strong>(123) 456-7890</strong> or reply to this message to set up a time that works for you.</p>
         </div>
 
         <div class="buttons">
-            <button class="follow-up">Initiate Follow-up Call</button>
+            <button class="follow-up" id="follow-up-button">Schedule Follow-up Call</button>
         </div>
 
     </div>
-    <p></p>
 
+    <script>
+        // Add Complaint Functionality
+        document.getElementById('submit-complaint').addEventListener('click', function () {
+            const clientName = document.getElementById('client-name').value;
+            const technicianName = document.getElementById('technician-name').value;
+            const complaintDetails = document.getElementById('complaint-details').value;
+
+            if (clientName && technicianName && complaintDetails) {
+                const complaintsList = document.getElementById('complaints-list');
+                const feedbackList = document.getElementById('feedback-list');
+
+                const complaintItem = document.createElement('div');
+                complaintItem.className = 'complaint-item';
+                complaintItem.innerHTML = `
+                        <span><strong>${complaintDetails}</strong><br>${clientName} (Technician: ${technicianName})</span>
+                        <span>${new Date().toLocaleDateString()}</span>
+                    `;
+
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                feedbackItem.innerHTML = `
+                        <span>${clientName}</span>
+                        <span class="rating">No Rating</span>
+                        <span>${complaintDetails}</span>
+                    `;
+
+                complaintsList.prepend(complaintItem); // Add new complaint at the top
+                feedbackList.prepend(feedbackItem); // Add the complaint to feedback section
+                document.getElementById('client-name').value = '';
+                document.getElementById('technician-name').value = '';
+                document.getElementById('complaint-details').value = '';
+            } else {
+                alert('Please fill in all fields to submit your complaint.');
+            }
+        });
+
+        // Submit Feedback Functionality
+        document.getElementById('submit-feedback').addEventListener('click', function () {
+            const feedbackClientName = document.getElementById('feedback-client-name').value;
+            const feedbackComment = document.getElementById('feedback-comment').value;
+            const feedbackRating = document.getElementById('feedback-rating').value;
+
+            if (feedbackClientName && feedbackComment && feedbackRating) {
+                const feedbackList = document.getElementById('feedback-list');
+
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                feedbackItem.innerHTML = `
+                        <span>${feedbackClientName}</span>
+                        <span class="rating">${'★'.repeat(feedbackRating)}${'☆'.repeat(5 - feedbackRating)}</span>
+                        <span>${feedbackComment}</span>
+                    `;
+
+                feedbackList.prepend(feedbackItem); // Add new feedback at the top
+                document.getElementById('feedback-client-name').value = '';
+                document.getElementById('feedback-rating').value = '';
+                document.getElementById('feedback-comment').value = '';
+            } else {
+                alert('Please fill in all fields to submit your feedback.');
+            }
+        });
+
+        // Survey Filling Functionality
+        document.getElementById('fill-survey-button').addEventListener('click', function () {
+            const selectedSurvey = document.getElementById('survey-selection').value;
+            const surveyRating = document.getElementById('survey-rating').value;
+
+            if (selectedSurvey && surveyRating) {
+                const surveyResultsList = document.getElementById('survey-results-list');
+
+                const surveyItem = document.createElement('div');
+                surveyItem.className = 'survey-item';
+                surveyItem.innerHTML = `
+                        <span>${selectedSurvey} - Rating: ${surveyRating}</span>
+                        <span>${new Date().toLocaleDateString()}</span>
+                    `;
+
+                surveyResultsList.prepend(surveyItem); // Add new survey result at the top
+                document.getElementById('survey-selection').value = ''; // Reset selection
+                document.getElementById('survey-rating').value = ''; // Reset rating
+            } else {
+                alert('Please select a survey and rating to fill out.');
+            }
+        });
+
+        // Follow-up Call Functionality
+        document.getElementById('follow-up-button').addEventListener('click', function () {
+            const followUpSection = document.getElementById('follow-up-section');
+            followUpSection.style.display = followUpSection.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Button Functionality to Show Sections
+        document.getElementById('my-feedback-button').addEventListener('click', function () {
+            toggleSections('feedback-section');
+        });
+
+        document.getElementById('technician-reviews-button').addEventListener('click', function () {
+            toggleSections('technician-reviews-section');
+        });
+
+        document.getElementById('survey-results-button').addEventListener('click', function () {
+            toggleSections('survey-section');
+        });
+
+        document.getElementById('add-complaint-button').addEventListener('click', function () {
+            toggleSections('complaints-section');
+        });
+
+        function toggleSections(sectionId) {
+            // Hide all sections
+            const sections = ['complaints-section', 'feedback-section', 'technician-reviews-section', 'survey-section', 'follow-up-section'];
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
