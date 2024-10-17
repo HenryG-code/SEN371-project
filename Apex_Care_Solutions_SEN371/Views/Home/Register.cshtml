@@ -6,10 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApexCare Solutions</title>
+    <title>ApexCare Solutions - Register</title>
     <style>
         .register-button button:hover {
             background-color: black;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -17,12 +22,11 @@
 <body>
     <h2>Register</h2>
 
-     @* <form method="post" action="/Account/Register"> *@
     <form asp-action="Register" asp-controller="Home" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" name="email" required>
-            <h6>We never Share your email with others</h6>
+            <h6>We never share your email with others</h6>
         </div>
 
         <div class="form-group">
@@ -32,10 +36,23 @@
         </div>
 
         <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password" name="password" required>
             <h6>Password must be at least 8 characters</h6>
         </div>
+
+        @* Display error message if registration fails *@
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="error-message">
+                <span>@ViewBag.ErrorMessage</span>
+            </div>
+        }
 
         <div class="register-button">
             <button type="submit" class="btn btn-primary">Register</button>
@@ -43,3 +60,4 @@
     </form>
 </body>
 </html>
+
