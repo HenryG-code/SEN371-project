@@ -7,16 +7,33 @@ namespace Apex_Care_Solutions_SEN371.Controllers
 {
     public class HomeController : Controller
     {
-        //Update tp match you specific PC
-        private readonly string _connectionString = "Server=HENRYPC\\SQLEXPRESS01;Database=ApexCareDB;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
+        private readonly string _connectionString;
 
-
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IConfiguration configuration)
         {
-            _logger = logger;
+            // Option to use configuration values from appsettings.json
+            string connectionString1 = configuration.GetConnectionString("CyberWizard");
+            string connectionString2 = configuration.GetConnectionString("HenryPC");
+
+            // Use Environment.MachineName or another condition to pick the right connection string
+            if (Environment.MachineName == "THECYBERWIZARD")
+            {
+                _connectionString = connectionString1;
+            }
+            else if (Environment.MachineName == "HENRYPC")
+            {
+                _connectionString = connectionString2;
+            }
+            else
+            {
+                // Default or fallback connection string
+                _connectionString = connectionString1;
+            }
+
+            Debug.WriteLine($"Using Connection String: {_connectionString}");
         }
+
+
 
         public IActionResult Index()
         {
