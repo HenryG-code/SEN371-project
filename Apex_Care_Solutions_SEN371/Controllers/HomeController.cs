@@ -10,7 +10,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
     public class HomeController : Controller
     {
         // Update to match your specific PC
-        private readonly string _connectionString = "Server=TIAAN_PC\\SQLEXPRESS;Database=ApexCare;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
+        private readonly string _connectionString = "Server=THECYBERWIZARD\\SQLEXPRESS;Database=ApexCare;Trusted_Connection=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;";
 
         private readonly ILogger<HomeController> _logger;
 
@@ -64,6 +64,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+       
         [HttpPost]
         public IActionResult Register(string username, string password, string name, string email)
         {
@@ -71,12 +72,26 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             {
                 connection.Open();
 
+                // Check if username already exists
+                string checkUsernameQuery = "SELECT COUNT(*) FROM Clients WHERE Username = @Username";
+                using (SqlCommand checkCommand = new SqlCommand(checkUsernameQuery, connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@Username", username);
+                    int usernameCount = (int)checkCommand.ExecuteScalar();
+
+                    // If username already exists, show an error message
+                    if (usernameCount > 0)
+                    {
+                        ViewBag.ErrorMessage = "Username already exists. Please choose a different username.";
+                        return View(); // Return to the registration page with the error message
+                    }
+                }
+
                 // Hash the password
                 string passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
 
                 // Insert into Clients table
                 string insertQuery = "INSERT INTO Clients (Username, PasswordHash, Name, Email) VALUES (@Username, @Password, @Name, @Email)";
-
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
                     command.Parameters.AddWithValue("@Username", username);
@@ -97,6 +112,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
                 }
             }
         }
+
 
         [HttpPost]
         public IActionResult Login(string username, string password)
