@@ -1,30 +1,127 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-    <div class="text-center">
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call and Fault Report Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
 
-        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
-            Go to the Client Page
-        </a>
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-        <a href="@Url.Action("ClientSatisfaction", "Home")" class="btn btn-primary">
-            Go to Client Satisfaction Services
-        </a>
+        h1 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-        <a href="@Url.Action("ClientManagement", "Home")" class="btn btn-primary">
-            Go to Client Management Services
-        </a>
+        .client-info, .feedback-section {
+            margin-bottom: 20px;
+        }
 
-        <a href="@Url.Action("Technicians", "Home")" class="btn btn-primary">
-            Go to Technicians
-        </a>
+            .client-info div, .reported-issues div, .feedback-section div {
+                margin-bottom: 10px;
+            }
 
-        <a href="@Url.Action("ServiceDesk", "Home")" class="btn btn-primary">
-            Go to Service Desk
-        </a>
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
 
-        <a href="@Url.Action("Privacy", "Home")" class="btn btn-primary">
-            Go to the Contract Management Page
-        </a>
+        .btn-black {
+            background-color: #000;
+            color: #fff;
+        }
 
-    </div>
-}
+
+        .nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: #fff;
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+        }
+
+        .nav-item {
+            text-align: center;
+        }
+
+            .nav-item img {
+                width: 24px;
+                height: 24px;
+            }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Call and Fault Report Management</h1>
+
+        <!-- Client Data and Service History Section -->
+        <div class="client-info">
+            <div><strong>Client Name:</strong> Client Name Here</div>
+            <div><strong>Last Service Date:</strong> Last service date here</div>
+        </div>
+
+        <!-- Reported Issues Section -->
+        <div class="reported-issues">
+            <div><strong>Reported Issues</strong></div>
+            <div style="border: 1px solid #ccc; padding: 15px;">
+                <div style="margin-bottom: 10px;">Status: <span style="background-color: #e0e0e0; padding: 3px;">Maybe we can grab the status from the Technician page and display here?</span></div>
+                <div style="background-color: #f5f5f5; height: 150px; display: flex; align-items: center; justify-content: center;">
+                    <span>Image Placeholder</span>
+                </div>
+                <div>Fault Reason Here</div>
+                <div>Priority: <strong>Client Priority Here</strong></div>
+                <div>Priority: <strong>Assigned Technician Name</strong></div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <button class="btn" onclick="logInteraction()">Log a fault</button>
+        <button class="btn" onclick="changePriority()">Escalate Issue</button>
+        <button class="btn btn-black" onclick="assignWorkRequest()">Maybe have the SMS section here to send a direct SMS to your technician?</button>
+
+
+    <script>
+        function changePriority() {
+            alert('Change Priority button clicked');
+
+        }
+
+        function logInteraction() {
+            alert('Log Interaction button clicked');
+
+        }
+
+        function assignWorkRequest() {
+            alert('Assign Work Request button clicked');
+
+        }
+    </script>
+
+</body>
+</html>

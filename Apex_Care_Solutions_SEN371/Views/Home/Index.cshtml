@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,25 +32,26 @@
             align-items: center;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
+            nav ul {
+                display: flex;
+                list-style: none;
+            }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+                nav ul li {
+                    margin: 0 15px;
+                }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
+                    nav ul li a {
+                        text-decoration: none;
+                        color: #333;
+                        font-weight: bold;
+                    }
 
-        nav .auth-buttons {
-            display: flex;
-            gap: 10px;
-        }
+            nav .auth-buttons {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }
 
         .auth-buttons button {
             background-color: #333;
@@ -60,9 +62,9 @@
             cursor: pointer;
         }
 
-        .auth-buttons button:hover {
-            background-color: #555;
-        }
+            .auth-buttons button:hover {
+                background-color: #555;
+            }
 
         /* Main Section */
         main {
@@ -89,18 +91,18 @@
             margin-bottom: 40px;
         }
 
-        .main-buttons button {
-            padding: 15px 25px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+            .main-buttons button {
+                padding: 15px 25px;
+                font-size: 16px;
+                border: 1px solid #ccc;
+                background-color: #fff;
+                cursor: pointer;
+                border-radius: 5px;
+            }
 
-        .main-buttons button:hover {
-            background-color: #f0f0f0;
-        }
+                .main-buttons button:hover {
+                    background-color: #f0f0f0;
+                }
 
         /* Footer */
         footer {
@@ -117,26 +119,26 @@
             padding: 0 50px;
         }
 
-        .footer-content ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+            .footer-content ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+            }
 
-        .footer-content ul li {
-            display: inline-block;
-        }
+                .footer-content ul li {
+                    display: inline-block;
+                }
 
-        .footer-content ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
+                    .footer-content ul li a {
+                        text-decoration: none;
+                        color: #333;
+                        font-weight: bold;
+                    }
 
-        .footer-content .logo {
-            font-size: 20px;
-            font-weight: bold;
-        }
+            .footer-content .logo {
+                font-size: 20px;
+                font-weight: bold;
+            }
 
     </style>
 </head>
@@ -159,23 +161,13 @@
         <h1>ApexCare Solutions</h1>
         <h2>We strive to provide you with the best service</h2>
 
-        <div class="main-buttons">
-            <button>View Technician Schedule</button>
-            <button>Book Appointment</button>
+        <div class="auth-buttons">
+            <button onclick="location.href='@Url.Action("ServiceDesk", "Home")'" class="btn btn-dark">Log a fault</button>
+            <button onclick="location.href='@Url.Action("Privacy", "Home")'" class="btn btn-outline-dark">View Contracts</button>
         </div>
 
-        <h2>Contract Status</h2>
-        <h2>Subheading</h2>
     </main>
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="footer-content">
-            <div class="logo">
-            </div>
-
-        </div>
-    </footer>
 
 </body>
 </html>
