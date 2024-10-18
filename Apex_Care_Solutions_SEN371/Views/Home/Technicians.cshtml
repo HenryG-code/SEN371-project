@@ -172,6 +172,10 @@
                     const result = await response.json();
                     if (response.ok) {
                         alert(result.success);
+
+                        //............The Below code returns an alert(error message, failed to fetch)............
+                        //............The Below code was commented out to replace it with an alert(sms sent to technician) since the API is not fully functional........
+
                         //         } else {
                         //             alert('Error: ' + result.error);
                         //         }

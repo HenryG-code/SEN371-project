@@ -273,12 +273,18 @@
         });
 
         // Submit Feedback Functionality
+        // Add event listener to the "submit-feedback" button that triggers the event once the button is clicked
         document.getElementById('submit-feedback').addEventListener('click', function () {
+
+            // Retrieve values from the input fields for client's name, comment, and rating
             const feedbackClientName = document.getElementById('feedback-client-name').value;
             const feedbackComment = document.getElementById('feedback-comment').value;
             const feedbackRating = document.getElementById('feedback-rating').value;
 
+            // Checks if all fields have values (name, comment, and rating)
             if (feedbackClientName && feedbackComment && feedbackRating) {
+
+                // Get the element where feedback items are displayed (feedback list)
                 const feedbackList = document.getElementById('feedback-list');
 
                 const feedbackItem = document.createElement('div');
@@ -290,9 +296,12 @@
                             `;
 
                 feedbackList.prepend(feedbackItem); // Add new feedback at the top
+
+                // Clear the input fields after submission
                 document.getElementById('feedback-client-name').value = '';
                 document.getElementById('feedback-rating').value = '';
                 document.getElementById('feedback-comment').value = '';
+
             } else {
                 alert('Please fill in all fields to submit your feedback.');
             }
