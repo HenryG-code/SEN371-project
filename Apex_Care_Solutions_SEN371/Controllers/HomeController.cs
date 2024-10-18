@@ -18,7 +18,7 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             _connectionString = configuration.GetConnectionString("DefaultConnection");
             _logger = logger;
         }
-
+        
         public IActionResult Index()
         {
             return View();
