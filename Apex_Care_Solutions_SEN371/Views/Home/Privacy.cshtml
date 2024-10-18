@@ -243,14 +243,24 @@
             const responseTime = document.getElementById('metric-response-time');
             const uptime = document.getElementById('metric-uptime');
 
+            // Checks to see if the selected service is 'serviceA'
             if (service === 'serviceA') {
+
+                // Update the response time for Service A
                 responseTime.querySelector('h2').innerText = '99%';
                 responseTime.querySelector('p:last-child').innerText = '-1%';
+
+                // Update the uptime for Service A
                 uptime.querySelector('h2').innerText = '99.8%';
                 uptime.querySelector('p:last-child').innerText = '+0.3%';
+
+                // Check if the selected service is 'serviceB'
             } else if (service === 'serviceB') {
+                // Update the response time for Service B
                 responseTime.querySelector('h2').innerText = '96%';
                 responseTime.querySelector('p:last-child').innerText = '-2%';
+
+                // Update the uptime for Service B
                 uptime.querySelector('h2').innerText = '98.5%';
                 uptime.querySelector('p:last-child').innerText = '-0.5%';
             }

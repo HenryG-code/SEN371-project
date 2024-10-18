@@ -168,13 +168,25 @@
         }
 
         function viewFaultDetails() {
+
+            // Retrieve the client name from the HTML element with ID 'client-name'
             const clientName = document.getElementById('client-name').innerText;
+
+            // Retrieve the fault reason from the HTML element with ID 'fault-reason'
             const faultReason = document.getElementById('fault-reason').innerText;
+
+            // Retrieve the current priority status from the HTML element with ID 'current-priority'
             const priority = document.getElementById('current-priority').innerText;
+
+            // Retrieve the last service date from the HTML element with ID 'last-service'
             const lastDate = document.getElementById('last-service').innerText;
+
+            // Get the current date and time when the fault is reported
             const dateReported = new Date().toLocaleString();
 
             const faultDetails = `Fault Reported:\nClient: ${clientName}\nReason: ${faultReason}\nPriority: ${priority}\nLast Service: ${lastDate}\nDate: ${dateReported}`;
+
+            // Display the fault details in an alert dialog to the user
             alert(faultDetails);
 
             console.log(faultDetails); // We can save it into the database here

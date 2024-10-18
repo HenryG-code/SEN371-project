@@ -143,12 +143,12 @@
     </style>
 </head>
 <body>
-
     <!-- Navigation Bar -->
     <header>
         <nav>
             <ul>
             </ul>
+            <!--Login button and Register button-->
             <div class="auth-buttons">
                 <button onclick="location.href='@Url.Action("Login", "Home")'" class="btn btn-dark">Sign In</button>
                 <button onclick="location.href='@Url.Action("Register", "Home")'" class="btn btn-outline-dark">Register</button>
@@ -161,14 +161,13 @@
         <h1>ApexCare Solutions</h1>
         <h2>We strive to provide you with the best service</h2>
 
+        <!--ServiceDesk button and Privacy(Contract Management) button-->
         <div class="auth-buttons">
             <button onclick="location.href='@Url.Action("ServiceDesk", "Home")'" class="btn btn-dark">Log a fault</button>
             <button onclick="location.href='@Url.Action("Privacy", "Home")'" class="btn btn-outline-dark">View Contracts</button>
         </div>
 
     </main>
-
-
 </body>
 </html>
 

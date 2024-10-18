@@ -1,5 +1,4 @@
-﻿﻿
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -219,37 +218,32 @@
     </div>
 
     <script>
-        function showContractStatus() {
-            const contractStatus = true; // Assume the contract status is stored as a boolean
-
-            if (contractStatus) {
-                alert("Client has an active contract.");
-            } else {
-                alert("Client does not have a contract.");
-            }
-        }
-
+        // Function to display detailed service information based on the selected service
         function showServiceDetails(service) {
+            // An object containing details for two services (Service A and Service B)
             const serviceDetails = {
                 'A': `Service A<br />
-                            High-performance service with advanced features including:<br />
-                            Feature 1: Detailed analytics<br />
-                            Feature 2: 24/7 support<br />
-                            Feature 3: Customizable options<br />
-                            Fault Urgency: <strong>High</strong><br />
-                            Maintenance Response: <strong>Urgent</strong> response within 1 hour`,
+                                    High-performance service with advanced features including:<br />
+                                    Feature 1: Detailed analytics<br />
+                                    Feature 2: 24/7 support<br />
+                                    Feature 3: Customizable options<br />
+                                    Fault Urgency: <strong>High</strong><br />
+                                    Maintenance Response: <strong>Urgent</strong> response within 1 hour`,
                 'B': `Service B<br />
-                            Reliable service with standard features including:<br />
-                            Feature 1: Basic analytics<br />
-                            Feature 2: Email support<br />
-                            Fault Urgency: <strong>Medium</strong><br />
-                            Maintenance Response: <strong>Standard</strong> response within 4 hours`
+                                    Reliable service with standard features including:<br />
+                                    Feature 1: Basic analytics<br />
+                                    Feature 2: Email support<br />
+                                    Fault Urgency: <strong>Medium</strong><br />
+                                    Maintenance Response: <strong>Standard</strong> response within 4 hours`
             };
-
+            // Find the HTML element with id 'service-description' and update its content
             document.getElementById('service-description').innerHTML = serviceDetails[service];
+
+            // Display the element with id 'service-details' by changing its style to 'block'
             document.getElementById('service-details').style.display = 'block';
         }
 
+        // A Function to update and display a clients' details
         function updateDetails() {
             const name = document.getElementById('client-name').value;
             const email = document.getElementById('client-email').value;
@@ -257,11 +251,13 @@
             const address = document.getElementById('client-address').value;
 
             // Update the display section with the new client details
+            // If no value is entered, a default value will be displayed, in this case ('John Doe')
             document.getElementById('display-client-name').innerText = name || 'John Doe';
             document.getElementById('display-client-email').innerText = email || 'john.doe@example.com';
             document.getElementById('display-client-phone').innerText = phone || '+1234567890';
             document.getElementById('display-client-address').innerText = address || '123 Main St, City, Country';
 
+            // Display an alert to confirm that the client details have been updated with the new values
             alert(`Client details updated:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}`);
         }
     </script>
