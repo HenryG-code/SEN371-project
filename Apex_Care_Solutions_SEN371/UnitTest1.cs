@@ -11,7 +11,6 @@ public class HomeControllerTests
     public HomeControllerTests()
     {
         var mockLogger = new Mock<ILogger<HomeController>>();
-        _controller = new HomeController((IConfiguration)mockLogger.Object);
     }
 
     [Fact]

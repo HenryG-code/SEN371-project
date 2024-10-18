@@ -10,31 +10,14 @@ namespace Apex_Care_Solutions_SEN371.Controllers
     public class HomeController : Controller
     {
         private readonly string _connectionString;
+        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(IConfiguration configuration)
+        // Use dependency injection to get the connection string from appsettings.json
+        public HomeController(IConfiguration configuration, ILogger<HomeController> logger)
         {
-            // Use GetSection("ConnectionStrings:<name>").Value instead of GetConnectionString("<name>")
-            string connectionString1 = configuration.GetSection("ConnectionStrings:CyberWizard").Value;
-            string connectionString2 = configuration.GetSection("ConnectionStrings:HenryPC").Value;
-
-            // Use Environment.MachineName or another condition to pick the right connection string
-            if (Environment.MachineName == "THECYBERWIZARD")
-            {
-                _connectionString = connectionString1;
-            }
-            else if (Environment.MachineName == "HENRYPC")
-            {
-                _connectionString = connectionString2;
-            }
-            else
-            {
-                _connectionString = connectionString1;  // Default connection string
-            }
-
-            Debug.WriteLine($"Using Connection String: {_connectionString}");
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _logger = logger;
         }
-
-
 
         public IActionResult Index()
         {
@@ -163,7 +146,6 @@ namespace Apex_Care_Solutions_SEN371.Controllers
                     Debug.WriteLine("Login successful for Client.");
                     return RedirectToAction("ClientManagement", "Home");
                 }
-
                 // If not found, check in Technicians
                 else if (TryAuthenticateUser(connection, "Technicians", username, password, out userType))
                 {
@@ -216,18 +198,17 @@ namespace Apex_Care_Solutions_SEN371.Controllers
             return false;
         }
       
-
         // Temporary action for generating hashed passwords
         public IActionResult GenerateHashedPassword()
-                {
-                    string plainPassword = "password123";  // Replace with the password you want to hash
-                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(plainPassword);
-                    Debug.WriteLine($"Generated Hashed Password: {hashedPassword}");
-                    return Content($"Hashed Password: {hashedPassword}");
+        {
+            string plainPassword = "password123";  // Replace with the password you want to hash
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(plainPassword);
+            Debug.WriteLine($"Generated Hashed Password: {hashedPassword}");
+            return Content($"Hashed Password: {hashedPassword}");
 
-                /*https://localhost:<PortYourServerisRunningOn>/Home/GenerateHashedPassword This link will help you generate hashpassword with the plain password being password123 by default*
+          /*https://localhost:<PortYourServerisRunningOn>/Home/GenerateHashedPassword This link will help you generate hashpassword with the plain password being password123 by default*
                  */
-                }
+        }
     }
 }
 
